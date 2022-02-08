@@ -15,13 +15,14 @@ class CreateFamiliesTable extends Migration
     public function up()
     {
         Schema::create('families', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string("nom")->nullable();
             $table->string("prenom")->nullable();
             $table->enum("sexe",Family::SEX)->default('HOMME');
-            $table->string("acteNaissance")->nullable();
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('userId')->nullable();
+            $table->string("birthday")->nullable();
+          //  $table->integer('userId')->unsigned();
+           // $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+
 
             $table->timestamps();
         });
