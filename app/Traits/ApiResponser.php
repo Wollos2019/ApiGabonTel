@@ -35,18 +35,14 @@ trait ApiResponser
     {
 
         if($collection->isEmpty()){
-            return $this->successResponse($collection,$code);
+            return $this->successResponse(['data'=>[]],$code);
         }
 
         if($filter) {
             $collection = $this->filterData($collection);
         }
 
-        if(request()->route()->getName() === 'users.restaurants.payments.index'
-            && request()->has('debug')
-            && request()->debug == '1') {
-            dd($collection);
-        }
+
 
         if($sort) {
             $collection = $this->sortData($collection);
