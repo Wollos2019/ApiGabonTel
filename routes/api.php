@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/products', [ProductController2::class, 'store']);
     Route::put('/products/{id}', [ProductController2::class, 'update']);
     Route::delete('/products/{id}', [ProductController2::class, 'delete']);
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/logout', [AuthController::class, 'logout']);
 });
 
 Route::middleware('auth:sanctum')->get('/me', function (Request $request) {

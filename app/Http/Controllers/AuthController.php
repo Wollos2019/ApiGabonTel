@@ -43,9 +43,7 @@ class AuthController extends ApiController
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = Auth::user();
-            $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-            $success['name'] =  $user->name;
-
+            $success =  $user->createToken('MyApp')->plainTextToken;
             return $this->successResponse( $success,200);
         }
         else{
@@ -53,10 +51,11 @@ class AuthController extends ApiController
         }
     }
 
-    public function logout (Request $request) {
-        auth()->user()->tokens()->delete();
-        return [
-            'message' => 'Logged out'
-        ];
+    public function logout (){
+        if(auth()->user()->tokens()->delete()){
+            $this->successResponse('Logged out',200);
+        }
+        $this->successResponse('Logged out',200);
+
     }
 }
