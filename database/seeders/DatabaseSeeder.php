@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             WorkingDaySeeder::class,
             UserSeeder::class,
-            CivilitySeeder::class
+            CivilitySeeder::class,
+            CountrySeeder::class
 
         ]);
     }
