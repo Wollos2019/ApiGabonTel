@@ -24,3 +24,6 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('departments',DepartmentController::class);
 Route::apiResource('fonctions',\App\Http\Controllers\Config\FonctionController::class);
 Route::apiResource('working_days',\App\Http\Controllers\Config\WorkingDayController::class);
+Route::apiResource('civilities',\App\Http\Controllers\Config\CivilityController::class);
+Route::apiResource('countries',\App\Http\Controllers\Config\CountryController::class);
+Route::apiResource('regions',\App\Http\Controllers\Config\RegionController::class);

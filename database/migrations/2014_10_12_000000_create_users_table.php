@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('birthday')->nullable();
-            $table->string('civility')->nullable();
+            $table->string('civilityId')->nullable();
             $table->enum('marital',User::MARITAL)->default('SINGLE');
 
             $table->string('phone')->nullable();
@@ -36,8 +36,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
 
             $table->enum('gender',User::GENDER)->default('MALE');
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('regionId')->unsigned()->nullable();
+            $table->foreign('regionId')->references('id')->on('regions')->onDelete(' RESTRICT');
 
             $table->rememberToken();
             $table->timestamps();

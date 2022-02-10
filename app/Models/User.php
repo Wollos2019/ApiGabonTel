@@ -28,7 +28,7 @@ class User extends Authenticatable
         'firstname',
         'lastname',
         'birthday',
-        'civility',
+        'civilityId',
         'status',
         'cni',
         'isAdmin',
@@ -39,7 +39,8 @@ class User extends Authenticatable
         'address',
         'courriel',
         'cnps',
-        'marital'
+        'marital',
+        'regionId'
     ];
 
     /**

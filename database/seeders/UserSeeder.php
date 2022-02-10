@@ -20,8 +20,7 @@ class UserSeeder extends Seeder
             Array(
                 'firstname' => "super",
                 'lastname' => "Admin",
-                'phone' => "237690088315",
-                'email' => "fabrice@netafrica.com",
+                'email' => "admin@gabontv.com",
                 'password' => bcrypt('GABONTV2022'),
                 'status' => 'ENABLE',
                 'isAdmin'=>1
