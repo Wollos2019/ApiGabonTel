@@ -16,7 +16,7 @@ class CountrySeeder extends Seeder
     public function run()
     {
         Country::truncate();
-        DB::table('civilities')->insert(
+        DB::table('countries')->insert(
             [
                 'name' => "GABON",
                 'abbreviation1'=>'GAB',
