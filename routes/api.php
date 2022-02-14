@@ -26,12 +26,12 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/products', [ProductController2::class, 'index']);
-    Route::get('/products/{id}', [ProductController2::class, 'show']);
-    Route::get('/products/search/{name}', [ProductController2::class, 'search']);
-    Route::post('/products', [ProductController2::class, 'store']);
-    Route::put('/products/{id}', [ProductController2::class, 'update']);
-    Route::delete('/products/{id}', [ProductController2::class, 'delete']);
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/products/{id}', [ProductController::class, 'show']);
+    Route::get('/products/search/{name}', [ProductController::class, 'search']);
+    Route::post('/products', [ProductController::class, 'store']);
+    Route::put('/products/{id}', [ProductController::class, 'update']);
+    Route::delete('/products/{id}', [ProductController::class, 'delete']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
