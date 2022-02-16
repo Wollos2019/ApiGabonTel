@@ -35,7 +35,7 @@ trait ApiResponser
     {
 
         if($collection->isEmpty()){
-            return $this->successResponse(['data'=>[]],$code);
+            return $this->successResponse([],$code);
         }
 
         if($filter) {

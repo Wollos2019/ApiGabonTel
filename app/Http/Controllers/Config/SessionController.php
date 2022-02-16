@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Rh\Employe;
+namespace App\Http\Controllers\Config;
 
 use App\Http\Controllers\ApiController;
-use App\Models\Rh\Employee;
+use App\Models\Holiday;
+use App\Models\Session;
 use Illuminate\Http\Request;
 
-class EmployeeController extends ApiController
+class SessionController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,25 +16,21 @@ class EmployeeController extends ApiController
      */
     public function index()
     {
-      return $this->showAll(Employee::all());
+        $sessions=Session::all();
+        return $this->showAll($sessions);
     }
+
 
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $employee=new Employee($request->all());
-        $employee->save();
-        if ($employee->save()){
-            return $this->successResponse('saved success',201);
-        }else{
-            return $this->errorResponse('Error saved',500);
-        }
+        //
     }
 
     /**
@@ -42,10 +39,11 @@ class EmployeeController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show($id)
     {
-       return $this->show($employee);
+        //
     }
+
 
 
     /**
@@ -69,5 +67,21 @@ class EmployeeController extends ApiController
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @param $year
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function sessionByYear($year){
+        $session=Session::where('year','=',$year)->first();
+        if($session){
+            $holiDays=Holiday::where('sessionId','=',$session->id)->get();
+            return $this->successResponse($holiDays,200);
+
+        }else{
+            return $this->errorResponse('Aucune session trouvée',204);
+        }
+
     }
 }
