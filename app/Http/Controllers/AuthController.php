@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class AuthController extends ApiController
 {
     public function register(Request $request) {
         $fields = $request->validate([
@@ -32,36 +33,29 @@ class AuthController extends Controller
         return response ($response, 201);
     }
 
-    public function login(Request $request) {
-        $fields = $request->validate([
-            
-            'email' => 'required|string',
-            'password' => 'required|string'
+    public function login(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+
         ]);
 
-        //Check Email
-        $user = User::where('email', $fields['email'])->first();
-        //Check Password
-        if(!$user || !Hash::check($fields['password'], $user->password)) {
-            return response([
-                'message' => 'Bad creds'
-            ], 401); 
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            $user = Auth::user();
+            $success =  $user->createToken('MyApp')->plainTextToken;
+            return $this->successResponse( $success,200);
         }
-
-        $token = $user -> createToken('myapptoken')->plainTextToken;
-
-        $response = [
-            'users' => $user,
-            'token' => $token
-        ];
-
-        return response ($response, 201);
+        else{
+            return $this->errorResponse('Unauthorised',403);
+        }
     }
 
-    public function logout (Request $request) {
-        auth()->user()->tokens()->delete();
-        return [
-            'message' => 'Logged out'
-        ];
+    public function logout (){
+        if(auth()->user()->tokens()->delete()){
+            $this->successResponse('Logged out',200);
+        }
+        $this->successResponse('Logged out',200);
+
     }
 }
