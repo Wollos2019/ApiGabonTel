@@ -27,4 +27,5 @@ Route::apiResource('countries',\App\Http\Controllers\Config\CountryController::c
 Route::apiResource('regions',\App\Http\Controllers\Config\RegionController::class);
 Route::apiResource('holidays',\App\Http\Controllers\Config\HolidayController::class);
 Route::apiResource('sessions',SessionController::class);
+Route::apiResource('absences',\App\Http\Controllers\Config\AbsenceController::class);
 Route::get('/sessions/{year}/year', [SessionController::class, 'sessionByYear']);

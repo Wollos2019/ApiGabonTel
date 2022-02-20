@@ -47,7 +47,10 @@ class User extends Authenticatable
         'dateStart',
         'dateEnd',
         'fonction',
-        'phone'
+        'phone',
+        'photo',
+        'placeBirth',
+        'salary'
     ];
 
     /**

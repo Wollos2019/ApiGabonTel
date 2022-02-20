@@ -17,18 +17,18 @@ class CivilitySeeder extends Seeder
     {
         Civility::truncate();
         DB::table('civilities')->insert(
-          [ 'name' => "Monsieur",]
+          [ 'name' => "Monsieur","abbreviation"=>'Mr']
         );
 
         DB::table('civilities')->insert(
-            [ 'name' => "Madame",]
+            [ 'name' => "Madame","abbreviation"=>'Mme']
         );
 
         DB::table('civilities')->insert(
-            [ 'name' => "Mademoiselle",]
+            [ 'name' => "Mademoiselle","abbreviation"=>'Mdle']
         );
         DB::table('civilities')->insert(
-            [ 'name' => "Docteur",]
+            [ 'name' => "Docteur","abbreviation"=>'Dr']
         );
     }
 }

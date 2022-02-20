@@ -16,6 +16,7 @@ class CreateWorkingDaysTable extends Migration
         Schema::create('working_days', function (Blueprint $table) {
             $table->increments('id');
             $table->string('day')->nullable();
+            $table->string('name')->nullable();
             $table->string('status')->default(0);
             $table->timestamp('departureTime')->nullable()->comment('heure de depart');
             $table->timestamp('arrivingTime')->nullable()->comment('heure arrive au travail');

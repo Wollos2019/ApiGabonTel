@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('birthday')->nullable();
-            $table->string('civilityId')->nullable();
+            $table->string('placeBirth')->nullable();
+
             $table->enum('marital',User::MARITAL)->default('SINGLE');
 
             $table->string('phone')->nullable();
@@ -37,6 +38,7 @@ class CreateUsersTable extends Migration
             $table->float('salary')->nullable();
             $table->string('contract')->nullable();
             $table->string('fonction')->nullable();
+            $table->string('photo')->nullable();
 
             $table->date('dateStart')->nullable();
             $table->date('dateEnd')->nullable();
@@ -44,10 +46,14 @@ class CreateUsersTable extends Migration
 
             $table->enum('gender',User::GENDER)->default('MALE');
             $table->string('password')->nullable();
-            $table->integer('departmentId')->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('departmentId')->unsigned()->nullable();
+            $table->foreign('departmentId')->references('id')->on('departments')->onDelete('RESTRICT');
+            $table->integer('civilityId')->unsigned()->nullable();
+            $table->foreign('civilityId')->references('id')->on('civilities')->onDelete('RESTRICT');
             $table->integer('regionId')->unsigned()->nullable();
-            $table->foreign('regionId')->references('id')->on('regions')->onDelete(' RESTRICT');
+            $table->foreign('regionId')->references('id')->on('regions')->onDelete('RESTRICT');
 
             $table->rememberToken();
             $table->timestamps();

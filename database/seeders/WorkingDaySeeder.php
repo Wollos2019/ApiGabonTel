@@ -20,6 +20,7 @@ class WorkingDaySeeder extends Seeder
         DB::table('working_days')->insert(
             Array(
                 'day' =>'monday',
+                'name'=>'Lundi',
                 'status'=>1
 
             )
@@ -28,6 +29,7 @@ class WorkingDaySeeder extends Seeder
         DB::table('working_days')->insert(
             Array(
                 'day' =>'tuesday',
+                'name'=>'Mardi',
                 'status'=>1
 
             )
@@ -36,6 +38,7 @@ class WorkingDaySeeder extends Seeder
         DB::table('working_days')->insert(
             Array(
                 'day' =>'wednesday',
+                'name'=>'Mercredi',
                 'status'=>1
 
             )
@@ -44,6 +47,7 @@ class WorkingDaySeeder extends Seeder
         DB::table('working_days')->insert(
             Array(
                 'day' =>'thursday',
+                'name'=>'Jeudi',
                 'status'=>1
 
             )
@@ -52,6 +56,7 @@ class WorkingDaySeeder extends Seeder
         DB::table('working_days')->insert(
             Array(
                 'day' =>'friday',
+                'name'=>'Vendredi',
                 'status'=>1
 
             )
@@ -60,6 +65,7 @@ class WorkingDaySeeder extends Seeder
         DB::table('working_days')->insert(
             Array(
                 'day' =>'saturday',
+                'name'=>'Samedi',
                 'status'=>1
 
             )
@@ -68,6 +74,7 @@ class WorkingDaySeeder extends Seeder
         DB::table('working_days')->insert(
             Array(
                 'day' =>'sunday',
+                'name'=>'Dimanche',
                 'status'=>0
 
             )
