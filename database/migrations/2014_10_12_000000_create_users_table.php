@@ -34,9 +34,17 @@ class CreateUsersTable extends Migration
             $table->boolean('isAdmin')->default(0);
             $table->enum('status',User::STATUS)->default('ENABLE');
             $table->string('email')->unique();
+            $table->float('salary')->nullable();
+            $table->string('contract')->nullable();
+            $table->string('fonction')->nullable();
+
+            $table->date('dateStart')->nullable();
+            $table->date('dateEnd')->nullable();
+
 
             $table->enum('gender',User::GENDER)->default('MALE');
             $table->string('password')->nullable();
+            $table->integer('departmentId')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('regionId')->unsigned()->nullable();
             $table->foreign('regionId')->references('id')->on('regions')->onDelete(' RESTRICT');

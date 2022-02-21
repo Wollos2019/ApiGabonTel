@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\session;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
-class SessionController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +14,7 @@ class SessionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Client::all();
     }
 
     /**
@@ -41,21 +31,10 @@ class SessionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\session  $session
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(session $session)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\session  $session
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(session $session)
+    public function show(Client $client)
     {
         //
     }
@@ -64,10 +43,10 @@ class SessionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\session  $session
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, session $session)
+    public function update(Request $request, Client $client)
     {
         //
     }
@@ -75,10 +54,10 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\session  $session
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(session $session)
+    public function destroy(Client $client)
     {
         //
     }

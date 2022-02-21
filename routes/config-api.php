@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\Config\DepartmentController;
-use App\Http\Controllers\ProductController2;
-use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Config\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +25,6 @@ Route::apiResource('working_days',\App\Http\Controllers\Config\WorkingDayControl
 Route::apiResource('civilities',\App\Http\Controllers\Config\CivilityController::class);
 Route::apiResource('countries',\App\Http\Controllers\Config\CountryController::class);
 Route::apiResource('regions',\App\Http\Controllers\Config\RegionController::class);
+Route::apiResource('holidays',\App\Http\Controllers\Config\HolidayController::class);
+Route::apiResource('sessions',SessionController::class);
+Route::get('/sessions/{year}/year', [SessionController::class, 'sessionByYear']);

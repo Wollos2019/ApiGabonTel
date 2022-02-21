@@ -14,7 +14,12 @@ class CreateHolidaysTable extends Migration
     public function up()
     {
         Schema::create('holidays', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('name')->nullable();
+            $table->string('date')->nullable();
+            $table->enum('status',\App\Models\Holiday::STATUS)->default('ENABLE');
+            $table->unsignedBigInteger('sessionId');
+             $table->foreign('sessionId')->references('id')->on('sessions')->onDelete('RESTRICT');
             $table->timestamps();
         });
     }

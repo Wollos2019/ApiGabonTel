@@ -17,8 +17,11 @@ class CreateRegionsTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->integer('countryId')->unsigned();
-            $table->foreign('countryId')->references('id')->on('countries')->onDelete(' RESTRICT');
+            $table->integer('countryId')->nullable();
+          //  $table->foreign('countryId')->references('id')->on('countries')->onDelete('cascade');
+
+           // $table->integer('countryId')->unsigned();
+           // $table->foreign('countryId')->references('id')->on('countries')->onDelete(' RESTRICT');
 
             $table->timestamps();
         });
