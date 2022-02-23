@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Commercial;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
+use Validator;
+use App\Models\Client;
 
-class ProductController2 extends Controller
+class ClientController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class ProductController2 extends Controller
      */
     public function index()
     {
-        return Product::all();
+        return $this->showAll(Client::all());
     }
 
     /**
@@ -25,11 +27,7 @@ class ProductController2 extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['name' => 'required',
-                                'slug' => 'required',
-                                'price' => 'required'
-    ]);
-        return Product::create($request->all());
+        //
     }
 
     /**
@@ -40,7 +38,7 @@ class ProductController2 extends Controller
      */
     public function show($id)
     {
-        return Product::find($id);
+        //
     }
 
     /**
@@ -52,9 +50,7 @@ class ProductController2 extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
-        $product->update($request->all());
-        return $product;
+        //
     }
 
     /**
@@ -65,17 +61,6 @@ class ProductController2 extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id);
-    }
-
-    /**
-     * Search for a name.
-     *
-     * @param  str  $name
-     * @return \Illuminate\Http\Response
-     */
-    public function search($name)
-    {
-        return Product::where('name','like', '%'.$name.'%')->get();
+        //
     }
 }

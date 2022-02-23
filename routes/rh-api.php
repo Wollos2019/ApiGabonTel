@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\ProductController2;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Rh\Employe\EmployeeController;
 use Illuminate\Http\Request;
