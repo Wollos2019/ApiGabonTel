@@ -3,6 +3,7 @@
 namespace App\Models\Rh;
 
 use App\Models\Civility;
+use App\Models\Department;
 use App\Models\User;
 use App\Scopes\Rh\EmployeeScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,11 +24,15 @@ class Employee extends User
     public function civility(){
          return $this->belongsTo(Civility::class,'civilityId','id','civilities');
     }
+    public function department(){
+        return $this->belongsTo(Department::class,'departmentId','id');
+    }
 
     public function getAppendsAttribute(){
         return [
             'url'=> $this->photo? asset('' . $this->photo):null,
             'name'=> $this->civility()->first()? $this->civility()->first()->abbreviation.". ".$this->lastname:$this->lastname,
+            'department'=>$this->department()->first()
 
         ];
     }

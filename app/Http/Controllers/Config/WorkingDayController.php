@@ -29,7 +29,20 @@ class WorkingDayController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $workings=workingDay::all();
+        return  $request->days;
+        foreach ($workings as $key => $value){
+            foreach ($request->days as $key => $day){
+                if($value['id']==$day){
+                    $value['status']=1;
+                    $value->save();
+                }else{
+                    $value['status']=0;
+                    $value->save();
+                }
+            }
+        }
+
     }
 
     /**

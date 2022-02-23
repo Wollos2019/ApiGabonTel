@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
             $table->boolean('isAdmin')->default(0);
             $table->enum('status',User::STATUS)->default('ENABLE');
             $table->string('email')->unique();
-            $table->float('salary')->nullable();
+            $table->float('salary',20)->nullable();
             $table->string('contract')->nullable();
             $table->string('fonction')->nullable();
             $table->string('photo')->nullable();

@@ -67,11 +67,40 @@ class EmployeeController extends ApiController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Employee $employee )
     {
-        //
+
+        $employee->lastname=$request->lastname;
+        $employee->firstname=$request->firstname;
+        $employee->email=$request->email;
+        $employee->cni=$request->cni;
+        $employee->gender=$request->gender;
+        $employee->cnps=$request->cnps;
+        $employee->numberChild=$request->numberChild;
+        $employee->phone=$request->phone;
+        $employee->address=$request->address;
+        $employee->birthday=$request->birthday;
+        $employee->country=$request->countryId;
+        $employee->town=$request->town;
+        $employee->civilityId=$request->civilityId;
+        $employee->courriel=$request->courriel;
+        $employee->marital=$request->marital;
+        $employee->salary=$request->salary;
+        $employee->contract=$request->contract;
+        $employee->fonction=$request->fonction;
+        $employee->dateStart=$request->dateStart;
+        $employee->dateEnd=$request->dateEnd;
+
+        $employee->departmentId=$request->departmentId;
+        $employee->placeBirth=$request->placeBirth;
+
+        if ($employee->update()){
+            return $this->successResponse('update success',200);
+        }else{
+            return $this->errorResponse('Error update',500);
+        }
     }
 
     /**

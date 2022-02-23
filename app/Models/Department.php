@@ -17,6 +17,8 @@ class Department extends Model
     }
 
     public function getAppendsAttribute(){
-        return ['countEmployee'=>$this->employees()->count()];
+        return [
+            'countEmployee'=> $this->employees()->count()
+        ];
     }
 }
