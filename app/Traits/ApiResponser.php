@@ -29,7 +29,7 @@ trait ApiResponser
 
     protected function errorResponse($message,$code=404)
     {
-        return response()->json(['error'=>$message,'code'=>$code],$code);
+        return response()->json(['errors'=>$message,'code'=>$code],$code);
     }
     protected function showAll(Collection $collection,$paginate = true, $code = 200, $filter = true, $sort = true,  $cache = false, $truncate = true)
     {

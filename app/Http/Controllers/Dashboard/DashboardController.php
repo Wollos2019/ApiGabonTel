@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Config;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\workingDay;
+use App\Models\Department;
+use App\Models\Rh\Employee;
 use Illuminate\Http\Request;
 
-class WorkingDayController extends ApiController
+class DashboardController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +17,23 @@ class WorkingDayController extends ApiController
      */
     public function index()
     {
-      return $this->successResponse(workingDay::all(),200);
+        $data=[
+            'countDepartment'=>Department::all()->count(),
+            'countEmployee'=>Employee::count(),
+        ];
+
+        return $this->successResponse($data);
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -29,20 +43,7 @@ class WorkingDayController extends ApiController
      */
     public function store(Request $request)
     {
-        $workings=workingDay::all();
-        return  $request->days;
-        foreach ($workings as $key => $value){
-            foreach ($request->days as $key => $day){
-                if($value['id']==$day){
-                    $value['status']=1;
-                    $value->save();
-                }else{
-                    $value['status']=0;
-                    $value->save();
-                }
-            }
-        }
-
+        //
     }
 
     /**
@@ -56,25 +57,27 @@ class WorkingDayController extends ApiController
         //
     }
 
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, workingDay $workingDay)
+    public function update(Request $request, $id)
     {
-        $workingDay->day=$request->day;
-        $workingDay->status=$request->status;
-
-        if ($workingDay->save()){
-            return $this->successResponse('update success',200);
-        }else{
-            return $this->errorResponse('Error update',500);
-        }
+        //
     }
 
     /**

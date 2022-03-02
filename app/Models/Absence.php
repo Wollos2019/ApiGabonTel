@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Civility extends Model
+class Absence extends Model
 {
     use HasFactory;
-    protected $fillable=['name','description','status','abbreviation'];
+    protected $fillable=['id','type','title','description','status','color'];
 }

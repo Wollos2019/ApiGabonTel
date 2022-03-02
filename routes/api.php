@@ -40,5 +40,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('dashboards',\App\Http\Controllers\Dashboard\DashboardController::class);
 
 

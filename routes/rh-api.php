@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Rh\Employe\EmployeeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::apiResource('personals',\App\Http\Controllers\Rh\Employe\EmployeeController::class);
+Route::apiResource('employees',EmployeeController::class);
+Route::post('/employees/{employee}/images', [EmployeeController::class, 'uploadImageEmployee']);

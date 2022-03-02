@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CivilitySeeder::class,
             CountrySeeder::class,
-            SessionSeeder::class
+            SessionSeeder::class,
+            AbsenceSeeder::class,
+            DepartmentSeeder::class
 
         ]);
     }

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource('departments',DepartmentController::class);
+Route::apiResource('departments.employees',\App\Http\Controllers\Config\Department\DepartmentEmployeeController::class);
 Route::apiResource('fonctions',\App\Http\Controllers\Config\FonctionController::class);
 Route::apiResource('working_days',\App\Http\Controllers\Config\WorkingDayController::class);
 Route::apiResource('civilities',\App\Http\Controllers\Config\CivilityController::class);
@@ -27,4 +28,5 @@ Route::apiResource('countries',\App\Http\Controllers\Config\CountryController::c
 Route::apiResource('regions',\App\Http\Controllers\Config\RegionController::class);
 Route::apiResource('holidays',\App\Http\Controllers\Config\HolidayController::class);
 Route::apiResource('sessions',SessionController::class);
+Route::apiResource('absences',\App\Http\Controllers\Config\AbsenceController::class);
 Route::get('/sessions/{year}/year', [SessionController::class, 'sessionByYear']);
