@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Commercial\ClientController;
 use App\http\Controllers\Commercial\CommandeController;
+use App\http\Controllers\Commercial\ComDetailsController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -18,12 +19,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-//Route::apiResource('clients', ClientController::class);
+Route::apiResources([
+    'clients' => ClientController::class,
+    'products' => ProductController::class,
+    'commandes' => CommandeController::class,
+    'commandeDetails' => ComDetailsController::class
+]);
 
-Route::middleware('auth:sanctum')->group( function () {
-    Route::get('/clients', [ClientController::class, 'index']);
-    Route::get('/products', [ProductController::class, 'index']);
-    Route::post('/products', [ProductController::class, 'store']);
-    Route::get('/commandes', [CommandeController::class, 'index']);
-    Route::post('/commandes', [CommandeController::class, 'store']);
-});
+Route::get('/commandeDetails/somme', [ComDetailsController::class, 'productSum']);
