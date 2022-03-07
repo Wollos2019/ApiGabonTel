@@ -26,11 +26,11 @@ class Employee extends User
     public function civility(){
          return $this->belongsTo(Civility::class,'civilityId','id','civilities');
     }
-    public function department(){
-        return $this->belongsTo(Department::class,'departmentId','id');
-    }
+
     public function contracts(){
-        return $this->belongsToMany(Contract::class,'user_department_fonction_contract','userId','contractId');
+        return $this->belongsToMany(Contract::class,'user_department_fonction_contract','userId','contractId')
+            ->withPivot(['salary','dateStart','dateEnd','departmentId','fonctionId']);
+       // 'status'
     }
 
 
@@ -38,7 +38,7 @@ class Employee extends User
         return [
             'url'=> $this->photo? asset('' . $this->photo):null,
             'name'=> $this->civility()->first()? $this->civility()->first()->abbreviation.". ".$this->lastname:$this->lastname,
-            'department'=>$this->department()->first(),
+             'contracts'=>$this->contracts()->get()
 
 
         ];

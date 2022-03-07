@@ -31,10 +31,19 @@ class EmployeeController extends ApiController
         $employee=new Employee($request->all());
         $employee->country=$request->countryId;
         $employee->password=bcrypt($request->password);
-        $employee->save();
         if ($employee->save()){
 
+            $employee->contracts()->attach($employee->id, [
+                'fonctionId' => $request->fonctionId,
+                'departmentId'=>$request->departmentId,
+                'salary'=>$request->salary,
+                'dateStart'=>$request->dateStart,
+                'dateEnd'=>$request->dateEnd
+            ]);
             return $this->successResponse($employee,201);
+
+
+
         }else{
             return $this->errorResponse('Error saved',500);
         }

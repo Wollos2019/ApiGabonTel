@@ -24,6 +24,11 @@ class CreateUserDepartmentFonctionContract extends Migration
             $table->foreign('fonctionId')->references('id')->on('fonctions');
             $table->integer('departmentId')->unsigned()->nullable();
             $table->foreign('departmentId')->references('id')->on('departments');
+            $table->float('salary',20)->nullable();
+            $table->date('dateStart')->nullable();
+            $table->date('dateEnd')->nullable();
+            $table->date('status')->default('pending');
+
 
             $table->timestamps();
         });

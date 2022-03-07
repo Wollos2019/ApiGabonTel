@@ -41,14 +41,10 @@ class User extends Authenticatable
         'cnps',
         'marital',
         'regionId',
-        'salary',
-        'dateStart',
-        'dateEnd',
-
         'phone',
         'photo',
-        'placeBirth',
-        'salary'
+        'placeBirth'
+
     ];
 
     /**

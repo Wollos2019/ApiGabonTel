@@ -35,13 +35,12 @@ class CreateUsersTable extends Migration
             $table->boolean('isAdmin')->default(0);
             $table->enum('status',User::STATUS)->default('ENABLE');
             $table->string('email')->unique();
-            $table->float('salary',20)->nullable();
+
 
 
             $table->string('photo')->nullable();
 
-            $table->date('dateStart')->nullable();
-            $table->date('dateEnd')->nullable();
+
 
 
             $table->enum('gender',User::GENDER)->default('MALE');
