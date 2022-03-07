@@ -33,6 +33,7 @@ class EmployeeController extends ApiController
         $employee->password=bcrypt($request->password);
         $employee->save();
         if ($employee->save()){
+
             return $this->successResponse($employee,201);
         }else{
             return $this->errorResponse('Error saved',500);
@@ -93,7 +94,7 @@ class EmployeeController extends ApiController
         $employee->dateStart=$request->dateStart;
         $employee->dateEnd=$request->dateEnd;
 
-        $employee->departmentId=$request->departmentId;
+
         $employee->placeBirth=$request->placeBirth;
 
         if ($employee->update()){

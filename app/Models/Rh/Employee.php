@@ -3,7 +3,9 @@
 namespace App\Models\Rh;
 
 use App\Models\Civility;
+use App\Models\Contract;
 use App\Models\Department;
+use App\Models\Fonction;
 use App\Models\User;
 use App\Scopes\Rh\EmployeeScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,12 +29,17 @@ class Employee extends User
     public function department(){
         return $this->belongsTo(Department::class,'departmentId','id');
     }
+    public function contracts(){
+        return $this->belongsToMany(Contract::class,'user_department_fonction_contract','userId','contractId');
+    }
+
 
     public function getAppendsAttribute(){
         return [
             'url'=> $this->photo? asset('' . $this->photo):null,
             'name'=> $this->civility()->first()? $this->civility()->first()->abbreviation.". ".$this->lastname:$this->lastname,
-            'department'=>$this->department()->first()
+            'department'=>$this->department()->first(),
+
 
         ];
     }

@@ -23,7 +23,9 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             SessionSeeder::class,
             AbsenceSeeder::class,
-            DepartmentSeeder::class
+            DepartmentSeeder::class,
+            ContractSeeder::class,
+            FonctionSeeder::class
 
         ]);
     }

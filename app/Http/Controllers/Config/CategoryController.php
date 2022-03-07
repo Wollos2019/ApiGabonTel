@@ -1,30 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Config;
 
-use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\Department;
-use App\Models\Rh\Employee;
-use App\Models\workingDay;
 use Illuminate\Http\Request;
 
-class DashboardController extends ApiController
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data=[
-            'countDepartment'=>Department::all()->count(),
-            'countEmployee'=>Employee::count(),
-            'countWorkingDay'=>workingDay::where('status','=',1)->count()
-        ];
-
-        return $this->successResponse($data);
+        //
     }
 
     /**

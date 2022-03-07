@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static whereIn(string $string, $days)
+ * @method static whereNotIn(string $string, $days)
+ */
 class workingDay extends Model
 {
     use HasFactory;

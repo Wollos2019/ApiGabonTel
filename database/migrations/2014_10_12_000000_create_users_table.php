@@ -36,8 +36,8 @@ class CreateUsersTable extends Migration
             $table->enum('status',User::STATUS)->default('ENABLE');
             $table->string('email')->unique();
             $table->float('salary',20)->nullable();
-            $table->string('contract')->nullable();
-            $table->string('fonction')->nullable();
+
+
             $table->string('photo')->nullable();
 
             $table->date('dateStart')->nullable();
@@ -48,8 +48,9 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
 
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('departmentId')->unsigned()->nullable();
-            $table->foreign('departmentId')->references('id')->on('departments')->onDelete('RESTRICT');
+
+
+
             $table->integer('civilityId')->unsigned()->nullable();
             $table->foreign('civilityId')->references('id')->on('civilities')->onDelete('RESTRICT');
             $table->integer('regionId')->unsigned()->nullable();
