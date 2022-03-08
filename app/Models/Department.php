@@ -13,12 +13,14 @@ class Department extends Model
     protected $fillable=['id','name','description','status'];
     protected $appends=['appends'];
     public function employees(){
-        return $this->hasMany(Employee::class,'departmentId','id');
+        return $this->belongsToMany(Employee::class,'user_department_fonction_contract','departmentId','userId')
+            ->withPivot(['salary','dateStart','dateEnd','departmentId','fonctionId','status']);
     }
 
     public function getAppendsAttribute(){
         return [
-            'countEmployee'=> 0
+            'countEmployee'=> $this->employees()->count(),
+            'employees'=>$this->employees()->get()
         ];
     }
 }

@@ -27,7 +27,7 @@ class CreateUserDepartmentFonctionContract extends Migration
             $table->float('salary',20)->nullable();
             $table->date('dateStart')->nullable();
             $table->date('dateEnd')->nullable();
-            $table->date('status')->default('pending');
+            $table->string('status')->default('pending');
 
 
             $table->timestamps();

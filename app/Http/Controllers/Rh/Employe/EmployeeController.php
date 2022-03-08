@@ -84,7 +84,7 @@ class EmployeeController extends ApiController
 
         $employee->lastname=$request->lastname;
         $employee->firstname=$request->firstname;
-        $employee->email=$request->email;
+       // $employee->email=$request->email;
         $employee->cni=$request->cni;
         $employee->gender=$request->gender;
         $employee->cnps=$request->cnps;
@@ -97,11 +97,11 @@ class EmployeeController extends ApiController
         $employee->civilityId=$request->civilityId;
         $employee->courriel=$request->courriel;
         $employee->marital=$request->marital;
-        $employee->salary=$request->salary;
-        $employee->contract=$request->contract;
-        $employee->fonction=$request->fonction;
-        $employee->dateStart=$request->dateStart;
-        $employee->dateEnd=$request->dateEnd;
+        //$employee->salary=$request->salary;
+       // $employee->contract=$request->contract;
+      //  $employee->fonction=$request->fonction;
+       // $employee->dateStart=$request->dateStart;
+       // $employee->dateEnd=$request->dateEnd;
 
 
         $employee->placeBirth=$request->placeBirth;

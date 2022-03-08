@@ -6,7 +6,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\Rh\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentEmployeeController extends ApiController
 {
@@ -17,9 +19,10 @@ class DepartmentEmployeeController extends ApiController
      */
     public function index(Department $department)
     {
+        $idUsers=DB::table('user_department_fonction_contract')->where('departmentId','=',$department->id)->get()->pluck('userId');
        return  $this->successResponse(
            [
-               'employees'=>Employee::where('departmentId','=',$department->id)->get(),
+               'employees'=>Employee::whereIn('id',$idUsers)->get(),
                'department'=>$department
            ]);
     }

@@ -29,7 +29,7 @@ class Employee extends User
 
     public function contracts(){
         return $this->belongsToMany(Contract::class,'user_department_fonction_contract','userId','contractId')
-            ->withPivot(['salary','dateStart','dateEnd','departmentId','fonctionId']);
+            ->withPivot(['salary','dateStart','dateEnd','departmentId','fonctionId','status']);
        // 'status'
     }
 
