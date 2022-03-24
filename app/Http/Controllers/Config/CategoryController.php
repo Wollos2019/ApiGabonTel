@@ -1,30 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Config\Department;
+namespace App\Http\Controllers\Config;
 
-use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\Department;
-use App\Models\Rh\Employee;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class DepartmentEmployeeController extends ApiController
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
-    public function index(Department $department)
+    public function index()
     {
-        $idUsers=DB::table('user_department_fonction_contract')->where('departmentId','=',$department->id)->get()->pluck('userId');
-       return  $this->successResponse(
-           [
-               'employees'=>Employee::whereIn('id',$idUsers)->get(),
-               'department'=>$department
-           ]);
+        //
     }
 
     /**

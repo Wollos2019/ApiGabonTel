@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Config;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
-use App\Models\workingDay;
+use App\Models\Contract;
 use Illuminate\Http\Request;
 
-class WorkingDayController extends ApiController
+class ContractController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class WorkingDayController extends ApiController
      */
     public function index()
     {
-      return $this->successResponse(workingDay::all(),200);
+        return $this->showAll(Contract::all());
     }
 
 
@@ -29,16 +29,13 @@ class WorkingDayController extends ApiController
      */
     public function store(Request $request)
     {
+        $contract=new Contract($request->all());
 
-       $yes= workingDay::whereIn('id',$request->days)->update(['status'=>1]);
-        $no= workingDay::whereNotIn('id',$request->days)->update(['status'=>0]);
-        if($yes && $no){
-            return $this->successResponse('update success',200);
+        if ($contract->save()){
+            return $this->successResponse('saved success',201);
         }else{
-            return $this->errorResponse('Error update',500);
+            return $this->errorResponse('Error saved',500);
         }
-
-
     }
 
     /**
@@ -59,18 +56,11 @@ class WorkingDayController extends ApiController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, workingDay $workingDay)
+    public function update(Request $request, $id)
     {
-        $workingDay->day=$request->day;
-        $workingDay->status=$request->status;
-
-        if ($workingDay->save()){
-            return $this->successResponse('update success',200);
-        }else{
-            return $this->errorResponse('Error update',500);
-        }
+        //
     }
 
     /**

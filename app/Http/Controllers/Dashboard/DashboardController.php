@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\Rh\Employee;
+use App\Models\workingDay;
 use Illuminate\Http\Request;
 
 class DashboardController extends ApiController
@@ -20,6 +21,7 @@ class DashboardController extends ApiController
         $data=[
             'countDepartment'=>Department::all()->count(),
             'countEmployee'=>Employee::count(),
+            'countWorkingDay'=>workingDay::where('status','=',1)->count()
         ];
 
         return $this->successResponse($data);
