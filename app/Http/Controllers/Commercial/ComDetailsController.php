@@ -42,7 +42,12 @@ class ComDetailsController extends Controller
      */
     public function productSum()
     {
-        return CommandesDetail::products();
+        // $comDet = new CommandesDetail;
+        // $comDet = CommandesDetail::all();
+        // for($i = 0; $i < count($comDet); ++$i) {
+        //     $comDet[$i]['idProduct'] = mt_rand(000000, 999999);
+        // }
+        return CommandesDetail::product();
     }
 
     /**

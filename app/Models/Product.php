@@ -10,8 +10,12 @@ class Product extends Model
     use HasFactory;
     
     protected $fillable = [
-        'name',
+        'productName',
         'description',
         'price'
     ];
+
+    public function commandesDetail() {
+        return $this->belongsTo(commandesDetail::class);
+    } 
 }

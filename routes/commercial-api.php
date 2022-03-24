@@ -7,6 +7,7 @@ use App\Http\Controllers\Commercial\ClientController;
 use App\http\Controllers\Commercial\CommandeController;
 use App\http\Controllers\Commercial\ComDetailsController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Commercial\FactureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,8 @@ Route::apiResources([
     'clients' => ClientController::class,
     'products' => ProductController::class,
     'commandes' => CommandeController::class,
-    'commandeDetails' => ComDetailsController::class
+    'commandeDetails' => ComDetailsController::class,
+    'factures' => FactureController::class
 ]);
 
-Route::get('/commandeDetails/somme', [ComDetailsController::class, 'productSum']);
+Route::get('/somme', [ComDetailsController::class, 'productSum']);
