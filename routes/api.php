@@ -1,7 +1,11 @@
 <?php
+
+use App\Http\Controllers\Assurance\AssuranceController;
+use App\Http\Controllers\PriseVehicule\PriseVehiculeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Vehicule\VehiculeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +21,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::resource('products', ProductController2::class);
+//Vehicules routes
 
+Route::resource('vehicules',VehiculeController::class);
 
+//Assurences routes
+
+Route::resource('assurances', AssuranceController::class);
+
+//Prise vehicules routes
+Route::resource('prise_vehicules', PriseVehiculeController::class);
 
 //Public Routes
 
@@ -28,10 +40,10 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    
+
     Route::get('/products/{id}', [ProductController::class, 'show']);
     Route::get('/products/search/{name}', [ProductController::class, 'search']);
-    
+
     Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'delete']);
     Route::get('/logout', [AuthController::class, 'logout']);
