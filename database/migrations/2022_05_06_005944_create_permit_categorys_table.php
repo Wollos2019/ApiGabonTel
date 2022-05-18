@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermisCategorieTable extends Migration
+class CreatePermitCategorysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePermisCategorieTable extends Migration
      */
     public function up()
     {
-        Schema::create('permis_categorie', function (Blueprint $table) {
+        Schema::create('permit_category', function (Blueprint $table) {
             $table->increments('id');
             $table->string('numeroDossierPermis')->nullable();
             $table->string('typeCategoriePermis')->nullable();
@@ -22,10 +22,10 @@ class CreatePermisCategorieTable extends Migration
 
 
             $table->integer('permis_id')->unsigned();
-            $table->foreign('permis_id')->references('id')->on('permis');
+            $table->foreign('permis_id')->references('id')->on('permits');
 
             $table->integer('categorie_permis_id')->unsigned();
-            $table->foreign('categorie_permis_id')->references('id')->on('categorie_permis');
+            $table->foreign('categorie_permis_id')->references('id')->on('category_permits');
             $table->timestamps();
         });
     }
@@ -37,6 +37,6 @@ class CreatePermisCategorieTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permis_categorie');
+        Schema::dropIfExists('permit_category');
     }
 }

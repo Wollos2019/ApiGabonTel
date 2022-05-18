@@ -14,7 +14,11 @@ class CreateUnitMesureTypeEntretiensTable extends Migration
     public function up()
     {
         Schema::create('unit_mesure_type_entretiens', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
+            $table->integer('unitMesureId')->unsigned();
+            $table->foreign('unitMesureId')->references('id')->on('unit_mesures')->onDelete('cascade');
+            $table->integer('typeEntretienId')->unsigned();
+            $table->foreign('typeEntretienId')->references('id')->on('type_entretiens')->onDelete('cascade');
             $table->timestamps();
         });
     }

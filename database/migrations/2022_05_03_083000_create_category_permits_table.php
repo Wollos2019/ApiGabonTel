@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriePermisTable extends Migration
+class CreateCategoryPermitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCategoriePermisTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorie_permis', function (Blueprint $table) {
+        Schema::create('category_permits', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelle')->nullable();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateCategoriePermisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorie_permis');
+        Schema::dropIfExists('category_permits');
     }
 }

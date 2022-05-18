@@ -5,10 +5,10 @@ namespace App\Models\Vehicule;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriePermis extends Model
+class CategoryPermit extends Model
 {
     use HasFactory;
-    protected $table="categorie_permis";
+    protected $table="category_permits";
     protected $fillable=[
         'libelle',
 
@@ -27,7 +27,7 @@ class CategoriePermis extends Model
    {
 
 
-       return$this->belongsToMany(Permis::class,'permis_categorie',
+       return$this->belongsToMany(Permit::class,'permis_categorie',
            'categorie_permis_id'
        )->withPivot(['numeroDossierPermis',
            'typeCategoriePermis','dateDebutPermis','dateFinPermis',

@@ -14,7 +14,9 @@ class CreateTypeEntretiensTable extends Migration
     public function up()
     {
         Schema::create('type_entretiens', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('libelleTypeEntretien');
+            $table->text('descriptionTypeEntretien');
             $table->timestamps();
         });
     }

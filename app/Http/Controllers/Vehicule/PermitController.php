@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Vehicule;
 use App\Http\Controllers\ApiController;
 
 use App\Models\Vehicule\Permit;
+use App\Models\Vehicule\CategoryPermit;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class PermisController extends ApiController
+class PermitController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -27,20 +28,20 @@ class PermisController extends ApiController
      * @return JsonResponse
      * @throws ValidationException
      */
-    public function store(Request $request, Permit $permis)
+    public function store(Request $request, Permit $permit)
     {
         $rules=[
             'numeroPermis'=>'required',
             'dateAcquisition'=>'required',
             'userId'=>'required',
-            'categorie_permis_id'=>'required'
+            'categorie_permis_id'=>''
 
 
 
         ];
         $this->validate($request,$rules);
 
-        $v= new Permit($request->all());
+        $permit= new Permit($request->all());
 
         $raw = Permit::where(['userId'=>$request->userId,'numeroPermis'=>$request->numeroPermis, 'dateAcquisition'=>$request->dateAcquisition])->first();
 //        if($v->save()){
@@ -53,16 +54,38 @@ class PermisController extends ApiController
             return $this->successResponse('exist');
         }
 
-        $catePermis= Permit::create($v);
 
-        if($request->categoriePermis){
-            foreach ($request->categoriePermis as $key => $value){
-                $catePermis->categoriePermis()->attach($catePermis->id, ['permis_id' => $value],['numeroDossierPermis' => $value],['typeCategoriePermis' => $value],['dateDebutPermis' => $value],['dateFinPermis' => $value],['categorie_permis_id' => $value]);
+
+        if($permit->save()){
+            foreach ($request->categories as $value){
+                $permit->categoryPermit()->attach([
+                    'categorie_permis_id'=>$value['categorie_permis_id'],
+                    'numeroDossierPermis' => $value['numeroDossierPermis'],
+                    'typeCategoriePermis' => $value['typeCategoriePermis'],
+                    'dateDebutPermis' => $value['dateDebutPermis'],
+                    'dateFinPermis' => $value['dateFinPermis']]);
+
             }
-        }
+            //foreach ($request->categories as $value){
+//            $permit->categoryPermit()->attach($permit->id,[
+//                'categorie_permis_id'=>$request->categorie_permis_id,
+//                'numeroDossierPermis' => $request->numeroDossierPermis,
+//                'typeCategoriePermis' => $request->typeCategoriePermis,
+//                'dateDebutPermis' => $request->dateDebutPermis,
+//                'dateFinPermis' => $request->dateFinPermis]);
+
+            // }
+
+//            return $this->successResponse($permit,201);
+//            return $this->showOne($permit);
+//        }else{
+//            return $this->errorResponse('Error saved',500);
+//        }
+
+    }
 
 
-        return $this->showOne($catePermis);
+        return $this->showOne($permit);
 
     }
 

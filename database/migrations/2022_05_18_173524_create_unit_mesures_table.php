@@ -14,7 +14,9 @@ class CreateUnitMesuresTable extends Migration
     public function up()
     {
         Schema::create('unit_mesures', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('symboleUniteMesure')->nullable();
+            $table->string('libelleUniteMesure')->nullable();
             $table->timestamps();
         });
     }

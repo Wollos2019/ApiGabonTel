@@ -6,10 +6,10 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permis extends Model
+class Permit extends Model
 {
     use HasFactory;
-    protected $table="permis";
+    protected $table="permits";
 
     protected $fillable=[
         'id',
@@ -28,8 +28,8 @@ class Permis extends Model
 
 
 
-public function categoriePermis(){
-        return$this->belongsToMany(CategoryPermit::class,'permis_categorie',
+public function categoryPermit(){
+        return$this->belongsToMany(CategoryPermit::class,'permit_category',
             'permis_id','categorie_permis_id'
         )->withPivot(['numeroDossierPermis',
               'typeCategoriePermis','dateDebutPermis','dateFinPermis',
@@ -44,7 +44,7 @@ public function categoriePermis(){
     {
         return[
             'user'=>$this->user()->first(),
-            'categoriePermis'=>$this->categoriePermis()->get(),
+            //'categoriePermis'=>$this->categoryPermit()->get(),
 
 
 

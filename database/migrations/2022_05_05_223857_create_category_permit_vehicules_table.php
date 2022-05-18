@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriePermiVehiculeTable extends Migration
+class CreateCategoryPermitVehiculesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCategoriePermiVehiculeTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorie_permi_vehicule', function (Blueprint $table) {
+        Schema::create('category_permit_vehicules', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('categorie_permis_Id')->unsigned();
-            $table->foreign('categorie_permis_Id')->references('id')->on('categorie_permis')->onDelete('CASCADE');
+            $table->integer('category_permits_Id')->unsigned()->nullable();
+            $table->foreign('category_permits_Id')->references('id')->on('category_permits')->onDelete('CASCADE');
 
-            $table->integer('vehicule_Id')->unsigned();
+            $table->integer('vehicule_Id')->unsigned()->nullable();
             $table->foreign('vehicule_Id')->references('id')->on('vehicules')->onDelete('CASCADE');
 
         });
@@ -32,6 +32,6 @@ class CreateCategoriePermiVehiculeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorie_permi_vehicule');
+        Schema::dropIfExists('category_permit_vehicules');
     }
 }

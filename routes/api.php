@@ -5,6 +5,8 @@ use App\Http\Controllers\PriseVehicule\PriseVehiculeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Vehicule\CategoryPermitController;
+use App\Http\Controllers\Vehicule\PermitController;
 use App\Http\Controllers\Vehicule\VehiculeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,15 @@ Route::resource('assurances', AssuranceController::class);
 
 //Prise vehicules routes
 Route::resource('prise_vehicules', PriseVehiculeController::class);
+
+// permis routes
+Route::resource('permits', PermitController::class);
+
+
+// categorie_permis routes
+Route::resource('category_permits', CategoryPermitController::class);
+
+
 
 //Public Routes
 

@@ -14,7 +14,15 @@ class CreatePannesTable extends Migration
     public function up()
     {
         Schema::create('pannes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('libellePanne')->nullable();
+            $table->text('descriptionPanne')->nullable();
+            $table->date('dateDebutPanne')->nullable();
+            $table->date('dateFinPanne')->nullable();
+            $table->integer('coutMainOeuvre')->nullable();
+            $table->string('factureMainOeuvre')->nullable();
+            $table->integer('vehiculeId')->unsigned();
+            $table->foreign('vehiculeId')->references('id')->on('vehicules');
             $table->timestamps();
         });
     }
