@@ -1,23 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Commercial;
+namespace App\Http\Controllers\Panne;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-use Validator;
-use App\Models\Client;
+use App\Http\Controllers\Controller;
+use App\Models\Panne;
+use Illuminate\Http\Request;
 
-class ClientController extends ApiController
+class PanneController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return $this->showAll(Client::all());
+        return $this->showAll(Panne::all());
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -27,7 +29,17 @@ class ClientController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $pan =[
+            'libellePanne'=>'required',
+            'descriptionPanne'=>'required',
+            'dateDebutPanne'=>'required',
+            'dateFinPanne'=>'required',
+            'coutMainOeuvre'=>'required',
+            'factureMainOeuvre'=>'required',
+            'vehiculeId'=>'required',
+
+        ];
+
     }
 
     /**
@@ -40,6 +52,8 @@ class ClientController extends ApiController
     {
         //
     }
+
+
 
     /**
      * Update the specified resource in storage.
