@@ -47,7 +47,7 @@ class ComDetailsController extends Controller
         // for($i = 0; $i < count($comDet); ++$i) {
         //     $comDet[$i]['idProduct'] = mt_rand(000000, 999999);
         // }
-        return CommandesDetail::product();
+        return "wollos";
     }
 
     /**
@@ -68,9 +68,11 @@ class ComDetailsController extends Controller
      * @param  \App\Models\CommandesDetails  $commandesDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CommandesDetails $commandesDetails)
+    public function update(Request $request, $id)
     {
-        //
+        $comDet = CommandesDetail::find($id);
+        $comDet->update($request->all());
+        return $comDet;
     }
 
     /**
@@ -82,5 +84,10 @@ class ComDetailsController extends Controller
     public function destroy(CommandesDetails $commandesDetails)
     {
         //
+    }
+
+    public function search($id)
+    {
+        return CommandesDetail::where('productName', 'Reportage');
     }
 }

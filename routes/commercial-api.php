@@ -28,4 +28,5 @@ Route::apiResources([
     'factures' => FactureController::class
 ]);
 
-Route::get('/somme', [ComDetailsController::class, 'productSum']);
+Route::get('/commandeDetails/somme', [ComDetailsController::class, 'productSum']);
+Route::get('/searchDet/{id}', [ComDetailsController::class, 'search']);
