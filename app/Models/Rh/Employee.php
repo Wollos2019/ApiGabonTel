@@ -7,6 +7,7 @@ use App\Models\Contract;
 use App\Models\Department;
 use App\Models\Fonction;
 use App\Models\User;
+use App\Models\Vehicule\Permit;
 use App\Scopes\Rh\EmployeeScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,6 +26,11 @@ class Employee extends User
 
     public function civility(){
          return $this->belongsTo(Civility::class,'civilityId','id','civilities');
+    }
+
+    public function permis()
+    {
+        return $this->hasMany(Permit::class,'permis_id','id');
     }
 
     public function contracts(){

@@ -29,4 +29,25 @@ class ApiController extends Controller
             File::delete($image);
         }
     }
+
+
+    public  function  uploadFile(UploadedFile $file, $path, $value= null){
+        if($value)
+        {
+            File::delete($value);
+
+        }
+        $disks=$path;
+        $url=null;
+        $storagePath = Storage::disk($disks)->put($url,$file);
+        $storageName = basename($storagePath);
+
+        return 'files/'.$path.'/'.$storageName;
+    }
+
+    public function deleteFile($file){
+        if($file){
+            File::delete($file);
+        }
+    }
 }
