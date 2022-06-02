@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Vehicule;
 use App\Http\Controllers\ApiController;
 
 use App\Models\Vehicule\Permit;
-use App\Models\Vehicule\CategoryPermit;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use function Symfony\Component\Translation\t;
 
 class PermitController extends ApiController
 {
@@ -20,6 +20,16 @@ class PermitController extends ApiController
     public function index()
     {
         return $this->showAll(Permit::all());
+    }
+    public function delete($id){
+        $p=Permit::find($id);
+        if($p->delete()){
+            return $this->successResponse('sucess',200);
+
+        }else{
+            return $this->successResponse('error',500);
+
+        }
     }
     /**
      * Store a newly created resource in storage.
@@ -34,16 +44,19 @@ class PermitController extends ApiController
             'numeroPermis'=>'required',
             'dateAcquisition'=>'required',
             'userId'=>'required',
-            'categorie_permis_id'=>''
+          //  'category_permit_id'=>'required',
+
+
 
 
 
         ];
+
         $this->validate($request,$rules);
 
         $permit= new Permit($request->all());
 
-        $raw = Permit::where(['userId'=>$request->userId,'numeroPermis'=>$request->numeroPermis, 'dateAcquisition'=>$request->dateAcquisition])->first();
+       $raw = Permit::where(['userId'=>$request->userId,'numeroPermis'=>$request->numeroPermis, 'dateAcquisition'=>$request->dateAcquisition])->first();
 //        if($v->save()){
 //
 //            return $this->showOne($v);
@@ -54,12 +67,27 @@ class PermitController extends ApiController
             return $this->successResponse('exist');
         }
 
-
+    //    return $this->successResponse($request->permiscategories);
+       //    dd($request->permiscategories);
 
         if($permit->save()){
+           // dd($request);
+           // dd($request->categories);
+//            foreach ($request->permiscategories as $value) {
+//                $permit->categoryPermit()->attach($permit->id, [
+//                    'category_permit_id' => $request->category_permit_id,
+//                    'numeroDossierPermis' => $request->numeroDossierPermis,
+//                    'typeCategoriePermis' => $request->typeCategoriePermis,
+//                    'dateDebutPermis' => $request->dateDebutPermis,
+//                    'dateFinPermis' => $request->dateFinPermis]);
+//            }
+           // dd($request->permiscategories);
+
             foreach ($request->categories as $value){
-                $permit->categoryPermit()->attach([
-                    'categorie_permis_id'=>$value['categorie_permis_id'],
+
+                    $permit->categoryPermit()->attach($permit->id,[
+
+                  'category_permit_id'=>$value['category_permit_id'],
                     'numeroDossierPermis' => $value['numeroDossierPermis'],
                     'typeCategoriePermis' => $value['typeCategoriePermis'],
                     'dateDebutPermis' => $value['dateDebutPermis'],
@@ -97,10 +125,10 @@ class PermitController extends ApiController
      * @param Permit $permis
      * @return JsonResponse
      */
-    public function show(Permit $permis)
+    public function show(Permit $permit)
     {
 
-        return $this->showOne($permis);
+        return $this->showOne($permit);
     }
 
 
@@ -110,19 +138,42 @@ class PermitController extends ApiController
      * @param Request $request
      * @param Permit $permis
      * @return JsonResponse
+     * @throws ValidationException
      */
-    public function update(Request $request, Permit $permis)
+    public function update(Request $request, Permit $permit)
     {
-        $permis->numeroPermis = $request->numeroPermis;
-        $permis->dateAcquisition = $request->dateAcquisition;
-        $permis->userId = $request->userId;
+        $rules=[
+            $permit->numeroPermis = $request->numeroPermis,
+        $permit->dateAcquisition = $request->dateAcquisition,
+        $permit->userId = $request->userId,
+        ];
+       // dd($request);
+       // $this->validate($request,$rules);
 
-        if ($permis->update()){
+        $data= $request->all();
+       // dd($data);
 
-            return $this->successResponse('update success',200);
-        }else{
-            return $this->errorResponse('Error delete',500);
+        $permit->update($data);
+
+        if ($request->categories){
+            foreach ($request->categories as $key=>$value){
+                $permit->categoryPermit()->detach($value['category_permit_id']);
+                $permit->categoryPermit()->attach($value['category_permit_id'],[
+                    'category_permit_id'=>$value['category_permit_id'],
+                    'numeroDossierPermis' => $value['numeroDossierPermis'],
+                    'typeCategoriePermis' => $value['typeCategoriePermis'],
+                    'dateDebutPermis' => $value['dateDebutPermis'],
+                    'dateFinPermis' => $value['dateFinPermis']]);
+
+            }
+            return $this->showOne($permit);
         }
+//        if ($$request->categories){
+//
+//            return $this->successResponse('update success',200);
+//        }else{
+//            return $this->errorResponse('Error delete',500);
+//        }
 
     }
 
@@ -133,14 +184,15 @@ class PermitController extends ApiController
      * @param Permit $permits
      * @return JsonResponse
      */
-    public function destroy(Permit $permits)
-    {
-        if ($permits->delete()){
-            return $this->successResponse('update success',200);
-        }else{
-            return $this->errorResponse('Error update',500);
-        }
-    }
+//    public function destroy(Permit $permits)
+//    {
+//        if ($permits->delete()){
+//
+//            return $this->successResponse('delete successefull',200);
+//        }else{
+//            return $this->errorResponse('Error of delete',500);
+//        }
+//    }
 
 
 }

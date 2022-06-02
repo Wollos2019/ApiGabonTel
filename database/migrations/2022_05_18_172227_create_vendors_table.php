@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeEntretiensTable extends Migration
+class CreateVendorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTypeEntretiensTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_entretiens', function (Blueprint $table) {
+        Schema::create('vendors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('libelleTypeEntretien');
-            $table->text('descriptionTypeEntretien');
-
-            $table->integer('unitMesureId')->unsigned();
-            $table->foreign('unitMesureId')->references('id')->on('unit_mesures')->onDelete('cascade');
+            $table->string('libelleFournisseur')->nullable();
+            $table->string('telephone1')->nullable();
+            $table->string('telephone2')->nullable();
+            $table->string('addressFournisseur')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTypeEntretiensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_entretiens');
+        Schema::dropIfExists('vendors');
     }
 }

@@ -15,11 +15,14 @@ class CreateFournisseurPannesTable extends Migration
     {
         Schema::create('fournisseur_pannes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('objetPriseVehicule')->nullable();
-            $table->date('datePriseVehicule')->nullable();
-            $table->time('heurePriseVehicule');
-            $table->integer('idVehicule')->unsigned();
-            $table->foreign("idVehicule")->references('id')->on('vehicules')->onDelete('cascade');
+            $table->string('facture')->nullable();
+            $table->integer('coutPiece')->nullable();
+
+            $table->integer('panneId')->unsigned();
+            $table->foreign("panneId")->references('id')->on('pannes')->onDelete('cascade');
+
+            $table->integer('fournisseurId')->unsigned();
+            $table->foreign("fournisseurId")->references('id')->on('vendors')->onDelete('cascade');
 
             $table->timestamps();
         });
