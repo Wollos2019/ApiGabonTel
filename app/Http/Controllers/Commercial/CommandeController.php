@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Commercial;
 use App\Http\Controllers\Controller;
 use App\Models\commande;
 use Illuminate\Http\Request;
+use DB;
 
 class CommandeController extends Controller
 {
@@ -16,6 +17,17 @@ class CommandeController extends Controller
     public function index()
     {
         return commande::all();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function evaluatedC()
+    {
+        return commande::where('evaluated','true')->get();
+        // return DB::table('commandes')->where('evaluated','true')->get();
     }
 
     /**
@@ -51,9 +63,11 @@ class CommandeController extends Controller
      * @param  \App\Models\commande  $commande
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, commande $commande)
+    public function update(Request $request, $id)
     {
-        //
+        $com = commande::find($id);
+        $com->update($request->all());
+        return $com;
     }
 
     /**

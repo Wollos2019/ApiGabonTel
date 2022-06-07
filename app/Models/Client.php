@@ -10,12 +10,24 @@ class Client extends Model
     use HasFactory;
     protected $fillable = [
         'nom', 
+        'prenom',
         'adresse',
         'email',
-        'telephone'
+        'telephone',
+        'gender',
+        'town',
+        'country',        
+        'civilityId'
     ];
 
     public function commande () {
         $this->hasMany(commande::class);
+    }
+
+    public function getAppendsAttribute(){
+        return [
+            'countEmployee'=> $this->employees()->count(),
+            'employees'=>$this->employees()->get()
+        ];
     }
 }

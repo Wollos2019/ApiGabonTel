@@ -12,7 +12,7 @@ class ClientController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -27,7 +27,13 @@ class ClientController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $client = new Client($request->all());
+
+        if($client->save()){
+            return $this->successResponse('Saved successfully', 201);
+        } else {
+            return $this->errorResponse('Error saved', 500);
+        }
     }
 
     /**

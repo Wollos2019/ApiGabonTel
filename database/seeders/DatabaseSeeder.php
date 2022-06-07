@@ -25,7 +25,15 @@ class DatabaseSeeder extends Seeder
             AbsenceSeeder::class,
             DepartmentSeeder::class,
             ContractSeeder::class,
-            FonctionSeeder::class
+            FonctionSeeder::class,
+            VehiculeSeeder::class,
+            AbsenceSeeder::class,
+            PriseVehiculeSeeder::class,
+            AssuranceSeeder::class,
+            permisSeeder::class,
+            CategoriePermisSeeder::class,
+            PermisCategorieSeeder::class,
+
 
         ]);
     }
