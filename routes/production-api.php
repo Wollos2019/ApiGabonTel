@@ -10,4 +10,5 @@ Route::apiResources([
     'trancheHoraires' => trancheHoController::class
 ]);
 
+
 Route::get('/evaluatedC', [CommandeController::class,'evaluatedC']);
