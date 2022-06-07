@@ -38,4 +38,5 @@ class commande extends Model
     {
         return $this->commandesDetail();
     }
+
 }
