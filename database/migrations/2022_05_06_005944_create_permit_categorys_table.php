@@ -21,11 +21,11 @@ class CreatePermitCategorysTable extends Migration
             $table->date('dateFinPermis')->nullable();
 
 
-            $table->integer('permis_id')->unsigned();
-            $table->foreign('permis_id')->references('id')->on('permits');
+            $table->integer('permit_id')->unsigned();
+            $table->foreign('permit_id')->references('id')->on('permits')->onDelete('cascade');
 
-            $table->integer('categorie_permis_id')->unsigned();
-            $table->foreign('categorie_permis_id')->references('id')->on('category_permits');
+            $table->integer('category_permit_id')->unsigned();
+            $table->foreign('category_permit_id')->references('id')->on('category_permits')->onDelete('restrict');
             $table->timestamps();
         });
     }

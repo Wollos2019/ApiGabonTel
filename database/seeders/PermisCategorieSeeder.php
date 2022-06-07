@@ -22,8 +22,8 @@ class PermisCategorieSeeder extends Seeder
                 'typeCategoriePermis'=>"A3F3",
                 'dateDebutPermis'=>"2003-05-12",
                 'dateFinPermis'=>"2013-05-12",
-                'permis_id'=>"1",
-                'categorie_permis_id'=>"1"
+                'permit_Id'=>"1",
+                'category_permit_id'=>"1"
 
             ]
         );
@@ -33,8 +33,8 @@ class PermisCategorieSeeder extends Seeder
                 'typeCategoriePermis'=>"A3F444",
                 'dateDebutPermis'=>"2017-05-12",
                 'dateFinPermis'=>"2023-05-12",
-                'permis_id'=>"2",
-                'categorie_permis_id'=>"2"
+                'permit_Id'=>"2",
+                'category_permit_id'=>"2"
 
             ]
         );
@@ -44,8 +44,8 @@ class PermisCategorieSeeder extends Seeder
                 'typeCategoriePermis'=>"AF3",
                 'dateDebutPermis'=>"2020-05-12",
                 'dateFinPermis'=>"2027-05-12",
-                'permis_id'=>"1",
-                'categorie_permis_id'=>"2"
+                'permit_Id'=>"1",
+                'category_permit_id'=>"2"
 
             ]
         );
@@ -55,8 +55,8 @@ class PermisCategorieSeeder extends Seeder
                 'typeCategoriePermis'=>"AAAAA",
                 'dateDebutPermis'=>"2012-05-12",
                 'dateFinPermis'=>"2023-05-12",
-                'permis_id'=>"2",
-                'categorie_permis_id'=>"3"
+                'permit_Id'=>"2",
+                'category_permit_id'=>"3"
 
             ]
         );

@@ -3,8 +3,10 @@
 namespace App\Models\Vehicule;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Permit extends Model
 {
@@ -15,11 +17,9 @@ class Permit extends Model
         'id',
         'numeroPermis',
         'dateAcquisition',
-        'userId',
+        'userId'];
 
-    ];
-
-    protected $appends=['appends'];
+   protected $appends=['appends'];
 
     public function user()
     {
@@ -30,7 +30,7 @@ class Permit extends Model
 
 public function categoryPermit(){
         return$this->belongsToMany(CategoryPermit::class,'permit_category',
-            'permis_id','categorie_permis_id'
+            'permit_Id','category_permit_id'
         )->withPivot(['numeroDossierPermis',
               'typeCategoriePermis','dateDebutPermis','dateFinPermis',
               ]);
@@ -40,11 +40,37 @@ public function categoryPermit(){
 
 }
 
+    public function compareDate(){
+
+        $pit = DB::table('permit_category')->where('permit_id','=',$this->id)->get();
+
+        $cat=[];
+        foreach ($pit as $key=>$item){
+            $cat[$key]=['cat'=>$item->category_permit_id,'expire'=>$this->expire($item->dateFinPermis)];
+        }
+
+      return $cat;
+
+
+    }
+    public function expire($datePermi){
+        $today= Carbon::now();
+        if ($datePermi <=$today){
+           return true ;
+       }else{
+           return false;
+        }
+    }
+
+
+
     public function getAppendsAttribute()
     {
         return[
             'user'=>$this->user()->first(),
-            //'categoriePermis'=>$this->categoryPermit()->get(),
+            'categoriePermit'=>$this->categoryPermit()->get(),
+            'totalPermit'=> Permit::count(),
+            'expireCategories'=>$this->compareDate()
 
 
 
@@ -52,6 +78,8 @@ public function categoryPermit(){
         ];
 
     }
+
+
 
 
 }

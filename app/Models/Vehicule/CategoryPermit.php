@@ -2,6 +2,7 @@
 
 namespace App\Models\Vehicule;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,27 +14,41 @@ class CategoryPermit extends Model
         'libelle',
 
     ];
-   // protected $appends=['appends'];
+    //protected $appends=['appends'];
 
 
 
   public function Vehicules()
     {
-       return $this->belongsToMany(Vehicule::class,'categorie_permi_vehicule','vehicule_Id','categorie_permis_Id');
+       return $this->belongsToMany(Vehicule::class,'category_permit_vehicules','vehicule_Id','category_permit_id');
 
     }
 
-   public function permis()
+
+
+   public function permit()
    {
 
 
-       return$this->belongsToMany(Permit::class,'permis_categorie',
-           'categorie_permis_id'
+       return$this->belongsToMany(Permit::class,'permit_category',
+           'category_permit_id'
        )->withPivot(['numeroDossierPermis',
            'typeCategoriePermis','dateDebutPermis','dateFinPermis',
        ]);
 
    }
+
+    public function getAppendsAttribute()
+    {
+        return[
+            //'permis'=>$this->permis()->get(),
+            // 'CategoryPermits'=>$this->CategoryPermit()->get(),
+            //'compareDate'=>$this->compareDate(),
+
+
+        ];
+
+    }
 
 
 }
