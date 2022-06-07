@@ -16,8 +16,8 @@ class CreateCategoryPermitVehiculesTable extends Migration
         Schema::create('category_permit_vehicules', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('category_permits_Id')->unsigned()->nullable();
-            $table->foreign('category_permits_Id')->references('id')->on('category_permits')->onDelete('CASCADE');
+            $table->integer('category_permit_id')->unsigned()->nullable();
+            $table->foreign('category_permit_id')->references('id')->on('category_permits')->onDelete('CASCADE');
 
             $table->integer('vehicule_Id')->unsigned()->nullable();
             $table->foreign('vehicule_Id')->references('id')->on('vehicules')->onDelete('CASCADE');

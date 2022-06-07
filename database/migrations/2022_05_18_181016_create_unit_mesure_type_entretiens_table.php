@@ -14,7 +14,7 @@ class CreateUnitMesureTypeEntretiensTable extends Migration
     public function up()
     {
         Schema::create('unit_mesure_type_entretiens', function (Blueprint $table) {
-            $table->integerIncrements('id');
+            $table->increments('id');
             $table->integer('unitMesureId')->unsigned();
             $table->foreign('unitMesureId')->references('id')->on('unit_mesures')->onDelete('cascade');
             $table->integer('typeEntretienId')->unsigned();

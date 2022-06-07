@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class UnitMesure extends Model
 {
     use HasFactory;
+    protected $table='unit_mesures';
+    protected $fillable=[
+        'symboleUniteMesure',
+        'libelleUniteMesure'
+    ];
 }
