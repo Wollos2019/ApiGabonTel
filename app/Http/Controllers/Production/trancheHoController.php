@@ -47,9 +47,11 @@ class trancheHoController extends Controller
      * @param  \App\Models\trancheHoraire  $trancheHoraire
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, trancheHoraire $trancheHoraire)
+    public function update(Request $request, $id)
     {
-        //
+        $trancheHoraire = trancheHoraire::find($id);
+        $trancheHoraire->update($request->all());
+        return $trancheHoraire;
     }
 
     /**

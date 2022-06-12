@@ -12,7 +12,8 @@ class trancheHoraire extends Model
     protected $fillable = [
         'designation',
         'occupied',
-        'idCommande'
+        'idCommande',
+        'contenu'
     ];
 
     public function returnCommande() {
