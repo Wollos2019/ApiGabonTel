@@ -1,0 +1,4 @@
+APP_KEY:      base64:em3ar6OZgBgMRVg7R5Pt3EGNWv5yks41xpyT4D6WlDk=
+DATABASE_URL: postgres://afubgnymdjqyve:11a79dcd5eb6f7c67bcd8a20a87ae7c757b
+52ddfbd0f68ecf53f19552b56f4c4@ec2-54-227-248-71.compute-1.amazonaws.com:543
+2/d9plhbosqflkn7
