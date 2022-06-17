@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
                //DB::statement('SET FOREIGN_KEY_CHECKS=0;');
- DB::statement('SET session_replication_role = \'replica\';');
+ DB::statement('Schema ::disableForeignKeyConstraints(); ');
         $this->call([
             WorkingDaySeeder::class,
             UserSeeder::class,
