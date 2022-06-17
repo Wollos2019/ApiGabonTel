@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         User::truncate();
         DB::table('users')->insert(
             Array(
-                'id'=>"1",
+
                 'firstname' => "super",
                 'lastname' => "Admin",
                 'email' => "admin@gabontv.com",
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
         );
         DB::table('users')->insert(
             Array(
-                'id'=>"2",
+
                 'firstname' => "manager",
                 'lastname' => "manger",
                 'email' => "manager@gabontv.com",
@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
         );
         DB::table('users')->insert(
             Array(
-                'id'=>"3",
+
                 'firstname' => "supervisor",
                 'lastname' => "supervisor",
                 'email' => "supervisor@gabontv.com",
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
         );
         DB::table('users')->insert(
             Array(
-                'id'=>"4",
+
                 'firstname' => "top manager",
                 'lastname' => "top manager",
                 'email' => "top@gabontv.com",

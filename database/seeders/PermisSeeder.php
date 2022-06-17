@@ -21,21 +21,21 @@ class PermisSeeder extends Seeder
             [   'id'=>"1",
                 'numeroPermis'=>" 14796gtd",
                 'dateAcquisition'=>"2003-05-12",
-                'userId'=>"3",
+                'userId'=>"1",
             ]
         );
         DB::table('permits')->insert(
             [   'id'=>"2",
                 'numeroPermis'=>"455656 mutsibushi",
                 'dateAcquisition'=>"2014-05-11",
-                'userId'=>"4",
+                'userId'=>"2",
             ]
         );
         DB::table('permits')->insert(
             [   'id'=>"3",
                 'numeroPermis'=>"14789 corrolla",
                 'dateAcquisition'=>"2007-07-12",
-                'userId'=>"5",
+                'userId'=>"3",
             ]
         );
 //        DB::table('permits')->insert(
