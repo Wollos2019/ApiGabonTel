@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             PriseVehiculeSeeder::class,
             AssuranceSeeder::class,
             CategoriePermisSeeder::class,
-            PermisCategorieSeeder::class,
+            //PermisCategorieSeeder::class,
 
 
         ]);
