@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             AbsenceSeeder::class,
             PriseVehiculeSeeder::class,
             AssuranceSeeder::class,
-            permisSeeder::class,
+            PermisSeeder::class,
             CategoriePermisSeeder::class,
             PermisCategorieSeeder::class,
 
