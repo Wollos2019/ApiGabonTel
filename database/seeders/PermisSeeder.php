@@ -21,7 +21,7 @@ class PermisSeeder extends Seeder
             [   'id'=>"1",
                 'numeroPermis'=>" 14796gtd",
                 'dateAcquisition'=>"2003-05-12",
-                'user_id'=>1,
+                'userId'=>1,
             ]
         );
 //        DB::table('permits')->insert(
