@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             SessionSeeder::class,
             AbsenceSeeder::class,
             DepartmentSeeder::class,
-            PermisSeeder::class,
+           // PermisSeeder::class,
             ContractSeeder::class,
             FonctionSeeder::class,
             VehiculeSeeder::class,
