@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         //DB::statement('SET session_replication_role = \'replica\';');
        // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
        // App\User::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+       // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $this->call([
             WorkingDaySeeder::class,
             UserSeeder::class,
