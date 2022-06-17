@@ -28,6 +28,42 @@ class UserSeeder extends Seeder
 
             )
         );
+        DB::table('users')->insert(
+            Array(
+                'firstname' => "manager",
+                'lastname' => "manger",
+                'email' => "manager@gabontv.com",
+                'password' => bcrypt('1234'),
+                'status' => 'ENABLE',
+                'isAdmin'=>0
+
+
+            )
+        );
+        DB::table('users')->insert(
+            Array(
+                'firstname' => "supervisor",
+                'lastname' => "supervisor",
+                'email' => "supervisor@gabontv.com",
+                'password' => bcrypt('12345'),
+                'status' => 'ENABLE',
+                'isAdmin'=>0
+
+
+            )
+        );
+        DB::table('users')->insert(
+            Array(
+                'firstname' => "top manager",
+                'lastname' => "top manager",
+                'email' => "top@gabontv.com",
+                'password' => bcrypt('012345'),
+                'status' => 'ENABLE',
+                'isAdmin'=>0
+
+
+            )
+        );
 
     }
 }

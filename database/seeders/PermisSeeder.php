@@ -38,19 +38,19 @@ class PermisSeeder extends Seeder
                 'userId'=>"4",
             ]
         );
-        DB::table('permits')->insert(
-            [   'id'=>"4",
-                'numeroPermis'=>"pajero 15478",
-                'dateAcquisition'=>"2002-05-12",
-                'userId'=>"5",
-            ]
-        );
-        DB::table('permits')->insert(
-            [   'id'=>"5",
-                'numeroPermis'=>"Camry toyota",
-                'dateAcquisition'=>"2003-05-12",
-                'userId'=>"6",
-            ]
-        );
+//        DB::table('permits')->insert(
+//            [   'id'=>"4",
+//                'numeroPermis'=>"pajero 15478",
+//                'dateAcquisition'=>"2002-05-12",
+//                'userId'=>"5",
+//            ]
+//        );
+//        DB::table('permits')->insert(
+//            [   'id'=>"5",
+//                'numeroPermis'=>"Camry toyota",
+//                'dateAcquisition'=>"2003-05-12",
+//                'userId'=>"6",
+//            ]
+//        );
     }
 }
