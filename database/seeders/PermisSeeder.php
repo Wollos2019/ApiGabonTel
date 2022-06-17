@@ -17,13 +17,13 @@ class PermisSeeder extends Seeder
     public function run()
     {
         Permit::truncate();
-        DB::table('permits')->insert(
-            [   'id'=>"1",
-                'numeroPermis'=>" 14796gtd",
-                'dateAcquisition'=>"2003-05-12",
-                'userId'=>"0",
-            ]
-        );
+//        DB::table('permits')->insert(
+//            [   'id'=>"1",
+//                'numeroPermis'=>" 14796gtd",
+//                'dateAcquisition'=>"2003-05-12",
+//                'userId'=>"0",
+//            ]
+//        );
         DB::table('permits')->insert(
             [   'id'=>"2",
                 'numeroPermis'=>"455656 mutsibushi",
