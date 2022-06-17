@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Commercial;
+namespace App\Http\Controllers\Production;
 
+use App\Http\Controllers\Controller;
+use App\Models\trancheHoraire;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
-use Validator;
-use App\Models\Client;
 
-class ClientController extends ApiController
+class trancheHoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return $this->showAll(Client::all());
+        return trancheHoraire::all();
     }
 
     /**
@@ -27,22 +26,16 @@ class ClientController extends ApiController
      */
     public function store(Request $request)
     {
-        $client = new Client($request->all());
-
-        if($client->save()){
-            return $this->successResponse('Saved successfully', 201);
-        } else {
-            return $this->errorResponse('Error saved', 500);
-        }
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\trancheHoraire  $trancheHoraire
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(trancheHoraire $trancheHoraire)
     {
         //
     }
@@ -51,10 +44,10 @@ class ClientController extends ApiController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\trancheHoraire  $trancheHoraire
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, trancheHoraire $trancheHoraire)
     {
         //
     }
@@ -62,10 +55,10 @@ class ClientController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\trancheHoraire  $trancheHoraire
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(trancheHoraire $trancheHoraire)
     {
         //
     }

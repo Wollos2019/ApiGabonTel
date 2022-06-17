@@ -13,7 +13,8 @@ class CommandesDetail extends Model
         'productName',
         'quantity',
         'idProduct',
-        'idCommande'
+        'idCommande',
+        'prix'
     ];
     protected $appends=['appends'];
 

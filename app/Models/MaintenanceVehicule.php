@@ -11,7 +11,15 @@ class MaintenanceVehicule extends Model
     use HasFactory;
     protected $table='maintenance_vehicules';
     protected $fillable=[
-        '',
+        'dateEntretien',
+        'cout',
+        'nextDateEntretien',
+        'kilometrageEntretien',
+        'kilometrageNextEntretien',
+        'quantiteTypeEntretien',
+        'vehiculeId',
+        'fournisseurId',
+        'typeEntretienId',
     ];
     public function typeMaintenanceVehicule(){
         return $this->belongsTo(TypeMaintenance::class);

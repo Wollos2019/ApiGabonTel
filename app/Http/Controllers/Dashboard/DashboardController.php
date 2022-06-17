@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
+use App\Models\Client;
 use App\Models\Rh\Employee;
 use App\Models\workingDay;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class DashboardController extends ApiController
     {
         $data=[
             'countDepartment'=>Department::all()->count(),
+            'countClient'=>Client::count(),
             'countEmployee'=>Employee::count(),
             'countWorkingDay'=>workingDay::where('status','=',1)->count()
         ];
