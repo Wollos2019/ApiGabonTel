@@ -78,6 +78,10 @@ class TypeMaintenanceController extends ApiController
      */
     public function destroy(TypeMaintenance $typeMaintenance)
     {
-        //
+        if($typeMaintenance->delete()){
+            return $this->successResponse("delete sucecces",'200');
+        }else{
+            return $this->errorResponse('delete fails','404');
+        }
     }
 }
