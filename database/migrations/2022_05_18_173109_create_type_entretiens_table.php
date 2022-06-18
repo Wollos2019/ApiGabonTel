@@ -18,7 +18,7 @@ class CreateTypeEntretiensTable extends Migration
             $table->string('libelleTypeEntretien');
             $table->text('descriptionTypeEntretien');
 
-            $table->integer('unitMesureId')->unsigned();
+            $table->integer('unitMesureId')->unsigned()->nullable();
             $table->foreign('unitMesureId')->references('id')->on('unit_mesures')->onDelete('cascade');
             $table->timestamps();
         });

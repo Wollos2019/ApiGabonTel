@@ -22,10 +22,10 @@ class CreateMaintenanceVehiculesTable extends Migration
             $table->string('kilometrageNextEntretien')->nullable();
             $table->integer('quantiteTypeEntretien')->nullable();
 
-            $table->integer('vehiculeId')->unsigned();
+            $table->integer('vehiculeId')->unsigned()->nullable();
             $table->foreign('vehiculeId')->references('id')->on('vehicules')->onDelete('cascade');
 
-            $table->integer('fournisseurId')->unsigned();
+            $table->integer('fournisseurId')->unsigned()->nullable();
             $table->foreign('fournisseurId')->references('id')->on('vendors')->onDelete('cascade');
 
             $table->integer('typeEntretienId')->unsigned();

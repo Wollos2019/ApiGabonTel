@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Maintenance;
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
+use App\Models\MaintenanceVehicule;
+use App\Models\TypeMaintenance;
 use Illuminate\Http\Request;
 
-class TypeMaintenanceController extends Controller
+class TypeMaintenanceController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +17,9 @@ class TypeMaintenanceController extends Controller
      */
     public function index()
     {
-        //
+        return  $this->showAll(TypeMaintenance::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,9 +27,20 @@ class TypeMaintenanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
-        //
+        $data=[
+            ''=>'required',
+            ''=>'required',
+            ''=>'required',
+            ''=>'required',
+            ''=>'required',
+            ''=>'required',
+            ''=>'required',
+            ''=>'required',
+
+
+        ];
     }
 
     /**
@@ -44,21 +49,12 @@ class TypeMaintenanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TypeMaintenance $typeMaintenance)
     {
-        //
+        return $this->showOne($typeMaintenance);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +63,11 @@ class TypeMaintenanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,TypeMaintenance $typeMaintenance)
     {
-        //
+        $data=[
+
+            ];
     }
 
     /**
@@ -78,7 +76,7 @@ class TypeMaintenanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TypeMaintenance $typeMaintenance)
     {
         //
     }

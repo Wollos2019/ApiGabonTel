@@ -13,4 +13,10 @@ class UnitMesure extends Model
         'symboleUniteMesure',
         'libelleUniteMesure'
     ];
+
+    public  function typeMaintenance()
+    {
+        return $this->belongsToMany(TypeMaintenance::class,'unit_mesure_type_entretiens','type_entretien_id','unit_mesure_id');
+
+    }
 }

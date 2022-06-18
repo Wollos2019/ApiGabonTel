@@ -18,10 +18,10 @@ class CreateFournisseurPannesTable extends Migration
             $table->string('facture')->nullable();
             $table->integer('coutPiece')->nullable();
 
-            $table->integer('panneId')->unsigned();
+            $table->integer('panneId')->unsigned()->nullable();
             $table->foreign("panneId")->references('id')->on('pannes')->onDelete('cascade');
 
-            $table->integer('fournisseurId')->unsigned();
+            $table->integer('fournisseurId')->unsigned()->nullable();
             $table->foreign("fournisseurId")->references('id')->on('vendors')->onDelete('cascade');
 
             $table->timestamps();
