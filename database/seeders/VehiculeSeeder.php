@@ -17,7 +17,7 @@ class VehiculeSeeder extends Seeder
     public function run()
 
     {
-        Vehicule::truncate();
+        //Vehicule::truncate();
         DB::table('vehicules')->insert(
             [   'id'=>"1",
                 'libelleVehicule'=>"Camry toyota",

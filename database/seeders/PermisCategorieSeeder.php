@@ -15,7 +15,7 @@ class PermisCategorieSeeder extends Seeder
      */
     public function run()
     {
-        PermisCategorie::truncate();
+       // PermisCategorie::truncate();
         DB::table('permit_category')->insert(
             [   'id'=>"1",
                 'numeroDossierPermis'=>" GB 000124",

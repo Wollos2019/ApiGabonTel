@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::truncate();
+        //Category::truncate();
         DB::table('categories')->insert(
             [ 'name' => "Monsieur"]
         );

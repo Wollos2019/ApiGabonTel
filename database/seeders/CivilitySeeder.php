@@ -15,7 +15,7 @@ class CivilitySeeder extends Seeder
      */
     public function run()
     {
-        Civility::truncate();
+        //Civility::truncate();
         DB::table('civilities')->insert(
           [ 'name' => "Monsieur","abbreviation"=>'Mr']
         );

@@ -15,7 +15,7 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        Country::truncate();
+       // Country::truncate();
         DB::table('countries')->insert(
             [
                 'name' => "GABON",

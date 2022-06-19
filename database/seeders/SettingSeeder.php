@@ -15,7 +15,7 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        Setting::truncate();
+       // Setting::truncate();
         DB::table('settings')->insert(
             [ 'key' => "LEAVE_DELAI_AUTORISE",'description'=>"",'name'=>'']
         );

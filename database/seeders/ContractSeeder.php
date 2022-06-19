@@ -15,7 +15,7 @@ class ContractSeeder extends Seeder
      */
     public function run()
     {
-        Contract::truncate();
+        //Contract::truncate();
         DB::table('contracts')->insert(
             [ 'name' => "Stageaire academy",'test'=>0,"term"=>2, "termMeasure"=>"s"]
         );
