@@ -71,8 +71,8 @@ Route::resource('unit_mesures', UnitMesureController::class);
 
 //Public Routes
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
 
 
 //Protected Routes
