@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Http\Controllers\Production;
+
+use App\Http\Controllers\Controller;
+use App\Models\Production\Conducteur;
+use Illuminate\Http\Request;
+
+class ConducteurController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return Conducteur::all();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Conducteur  $conducteur
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Conducteur $conducteur)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Conducteur  $conducteur
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Conducteur $conducteur)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Conducteur  $conducteur
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Conducteur $conducteur)
+    {
+        //
+    }
+}

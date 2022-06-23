@@ -27,7 +27,7 @@ class ComDetailsController extends Controller
     public function store(Request $request)
     {
         $request->validate(['productName' => 'required',
-            'quantity' => 'required',
+            'duree' => 'required',
             'idProduct' => 'required',
             'idCommande' => 'required'
         ]);
@@ -56,9 +56,9 @@ class ComDetailsController extends Controller
      * @param  \App\Models\CommandesDetails  $commandesDetails
      * @return \Illuminate\Http\Response
      */
-    public function show(CommandesDetails $commandesDetails)
+    public function show()
     {
-        //
+        
     }
 
     /**
@@ -81,7 +81,7 @@ class ComDetailsController extends Controller
      * @param  \App\Models\CommandesDetails  $commandesDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CommandesDetails $commandesDetails)
+    public function destroy()
     {
         //
     }

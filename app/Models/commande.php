@@ -10,9 +10,12 @@ class commande extends Model
     use HasFactory;
     protected $fillable = [
         'date', 
-        'contenu',
         'idClient',
-        'nomClient'
+        'nomClient',
+        'invoiced',
+        'evaluated',
+        'selected'
+        
     ];
     protected $appends=['appends'];
     protected $with= ['CommandesDetail'];

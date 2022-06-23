@@ -11,9 +11,10 @@ class CommandesDetail extends Model
     
     protected $fillable = [
         'productName',
-        'quantity',
+        'duree',
         'idProduct',
         'idCommande',
+        'frequence',
         'prix'
     ];
     protected $appends=['appends'];

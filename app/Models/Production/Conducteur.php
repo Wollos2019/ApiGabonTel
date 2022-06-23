@@ -10,8 +10,15 @@ class Conducteur extends Model
     use HasFactory;
     protected $fillable = ['date', 'idProgramme'];
 
+    protected $with= ['Programme'];
+
     public function programme () {
-        $this->hasMany(Programme::class);
+        return $this->hasMany(Programme::class);
+    }
+
+    public function getProgrammeAttribute()
+    {
+        return $this->programme();
     }
 }
 
