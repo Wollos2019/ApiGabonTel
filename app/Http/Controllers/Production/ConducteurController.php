@@ -26,7 +26,9 @@ class ConducteurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['date' => 'required'
+    ]);
+        return Conducteur::create($request->all());
     }
 
     /**
@@ -61,5 +63,15 @@ class ConducteurController extends Controller
     public function destroy(Conducteur $conducteur)
     {
         //
+    }
+
+    public function checkConducteur($date)
+    {
+        if(Conducteur::where('date',$date)->count()>0)
+        {
+            return array(true, Conducteur::where('date', $date)->get());
+        } else {
+            return false;
+        };
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Production;
 
+use App\Models\Production\Conducteur;
 use App\Http\Controllers\Controller;
 use App\Models\Production\Programme;
+use App\Http\Controllers\Production\ConducteurController;
 use Illuminate\Http\Request;
 
 class ProgrammeController extends Controller
@@ -26,7 +28,11 @@ class ProgrammeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['heure_debut' => 'required',
+                                'date' => 'required',
+                                'duree' => 'required'
+    ]);
+        return Programme::create($request->all());
     }
 
     /**

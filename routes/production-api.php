@@ -17,3 +17,4 @@ Route::apiResources([
 //Route pour les commandes à evaluer
 Route::get('/evaluatedC', [CommandeController::class,'evaluatedC']);
 Route::get('/searchTime', [ProgrammeController::class,'search']);
+Route::get('/checkConducteur/{date}', [ConducteurController::class,'checkConducteur']);

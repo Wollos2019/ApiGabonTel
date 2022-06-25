@@ -10,7 +10,7 @@ class Programme extends Model
     use HasFactory;
     protected $fillable = [
         'heure_debut', 'date', 'duree', 'denomination', 'description', 'idCommande',
-        'idProduit'
+        'idProduit', 'conducteur_id'
     ];
 
     public function conducteur() {
