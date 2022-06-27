@@ -69,9 +69,14 @@ class ConducteurController extends Controller
     {
         if(Conducteur::where('date',$date)->count()>0)
         {
-            return array(true, Conducteur::where('date', $date)->get());
+            return Conducteur::where('date', $date)->get();
         } else {
             return false;
         };
+    }
+
+    public function searchConduc($date1, $date2)
+    {
+        return Conducteur::whereBetwenn('date', [$date1, $date2])->get();
     }
 }

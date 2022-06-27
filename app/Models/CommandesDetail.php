@@ -10,12 +10,16 @@ class CommandesDetail extends Model
     use HasFactory;
     
     protected $fillable = [
+        'date_debut',
         'productName',
+        'description',
         'duree',
         'idProduct',
+        'heure_debut',
         'idCommande',
         'frequence',
         'prix'
+        
     ];
     protected $appends=['appends'];
 

@@ -18,3 +18,4 @@ Route::apiResources([
 Route::get('/evaluatedC', [CommandeController::class,'evaluatedC']);
 Route::get('/searchTime', [ProgrammeController::class,'search']);
 Route::get('/checkConducteur/{date}', [ConducteurController::class,'checkConducteur']);
+Route::get('/searchConduc/{date1}/{date2}', [ConducteurController::class, 'searchConduc']);
