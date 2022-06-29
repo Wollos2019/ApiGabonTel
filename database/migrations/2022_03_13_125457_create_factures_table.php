@@ -17,8 +17,9 @@ class CreateFacturesTable extends Migration
             $table->id();
             $table->string("nomClient");
             $table->integer("idClient")->unsigned();
-            $table->integer("idCommande")->unsigned();
+            $table->unsignedBigInteger("idCommande");
             $table->foreign("idClient")->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign("idCommande")->references('id')->on('commandes')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -20,6 +20,9 @@ class CreateTrancheHoTable extends Migration
             $table->bigInteger("idCommande")->unsigned()->nullable()->default('0');
             $table->foreign("idCommande")->references('id')->on('commandes')->onDelete('cascade');
             $table->timestamps();
+            $table->timestamp('heure_debut')->nullable();
+            $table->timestamp('heure_fin')->nullable();
+            $table->text('contenu')->nullable();
         });
     }
 

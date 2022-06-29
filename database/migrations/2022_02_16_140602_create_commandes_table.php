@@ -20,7 +20,7 @@ class CreateCommandesTable extends Migration
             $table->unsignedInteger('idClient');
             $table->foreign('idClient')->references('id')->on('clients')->onDelete('cascade');
             $table->unsignedBigInteger('idComDet')->nullable();
-            $table->foreign('idComDet')->references('id')->on('commandes_details')->onDelete('cascade');
+            
             $table->timestamps();
             $table->string('evaluated', 50)->nullable();
             $table->string('invoiced', 50)->nullable();

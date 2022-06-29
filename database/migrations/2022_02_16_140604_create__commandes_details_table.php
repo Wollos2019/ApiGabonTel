@@ -25,6 +25,7 @@ class CreateCommandesDetailsTable extends Migration
             $table->unsignedInteger('duree')->nullable();
             $table->text('frequence')->nullable();
             $table->foreign("idProduct")->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('idCommande')->references('id')->on('commandes')->onDelete('cascade');
             $table->timestamps();
             $table->text('description')->nullable();
         });
