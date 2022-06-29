@@ -15,11 +15,16 @@ class CreateCommandesTable extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
-            $table->text("contenu")->nullable();
-            $table->string("nomClient")->nullable();
+            $table->text('contenu')->nullable();
+            $table->string("nomClient", 191)->nullable();
             $table->unsignedInteger('idClient');
             $table->foreign('idClient')->references('id')->on('clients')->onDelete('cascade');
+            $table->unsignedBigInteger('idComDet')->nullable();
+            $table->foreign('idComDet')->references('id')->on('commandes_details')->onDelete('cascade');
             $table->timestamps();
+            $table->string('evaluated', 50)->nullable();
+            $table->string('invoiced', 50)->nullable();
+            $table->string('selected', 50)->nullable();
         });
     }
 

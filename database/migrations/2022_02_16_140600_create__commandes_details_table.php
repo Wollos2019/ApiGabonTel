@@ -15,13 +15,18 @@ class CreateCommandesDetailsTable extends Migration
     {
         Schema::create('commandes_details', function (Blueprint $table) {
             $table->id();
-            $table->string("productName")->nullable();
+            $table->string("productName", 191)->nullable();
             $table->integer("quantity")->unsigned();
             $table->integer("idProduct")->unsigned();
-            $table->integer("idCommande")->unsigned();
+            $table->unsignedBigInteger("idCommande");
+            $table->unsignedInteger('prix')->nullable();
+            $table->date('date_debut')->nullable();
+            $table->time('heure_debut')->nullable();
+            $table->unsignedInteger('duree')->nullable();
+            $table->text('frequence')->nullable();
             $table->foreign("idProduct")->references('id')->on('products')->onDelete('cascade');
-            //$table->foreign("idCommande")->references('id')->on('commandes')->onDelete('cascade');
             $table->timestamps();
+            $table->text('description')->nullable();
         });
     }
 
