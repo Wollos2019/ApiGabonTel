@@ -24,23 +24,27 @@ class TypeMaintenanceController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request )
     {
         $data=[
-            ''=>'required',
-            ''=>'required',
-            ''=>'required',
-            ''=>'required',
-            ''=>'required',
-            ''=>'required',
-            ''=>'required',
-            ''=>'required',
-
-
+            'libelleTypeEntretien'=>'required',
+            'descriptionTypeEntretien'=>'required',
+            'unitMesureId'=>'required',
         ];
+        $this->validate($request,$data);
+
+        $raw= new TypeMaintenance($request->all());
+
+        if ($raw->save()){
+            return $this->showOne($raw);
+        }
+        else{
+            return $this->errorResponse('store fails!',404);
+        }
     }
 
     /**
@@ -65,9 +69,20 @@ class TypeMaintenanceController extends ApiController
      */
     public function update(Request $request,TypeMaintenance $typeMaintenance)
     {
-        $data=[
+        $type=[
+            $typeMaintenance->libelleTypeEntretien = $request->libelleTypeEntretien,
+            $typeMaintenance->descriptionTypeEntretien = $request->descriptionTypeEntretien,
+            $typeMaintenance->unitMesureId = $request->unitMesureId,
 
-            ];
+        ];
+        $this->validate($request,$type);
+
+        $data=$request->all();
+        if ($typeMaintenance->update($data)){
+            return $this->showOne($data);
+        }else{
+            return $this->errorResponse('update fails!',404);
+        }
     }
 
     /**

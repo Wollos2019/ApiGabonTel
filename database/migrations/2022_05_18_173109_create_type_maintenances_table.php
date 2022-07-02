@@ -13,7 +13,7 @@ class CreateTypeEntretiensTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_entretiens', function (Blueprint $table) {
+        Schema::create('type_maintenances', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelleTypeEntretien');
             $table->text('descriptionTypeEntretien');
@@ -31,6 +31,6 @@ class CreateTypeEntretiensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_entretiens');
+        Schema::dropIfExists('type_maintenances');
     }
 }

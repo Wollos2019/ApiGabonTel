@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUnitMesureTypeEntretiensTable extends Migration
+class CreateUnitMesureTypeMaintenancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateUnitMesureTypeEntretiensTable extends Migration
      */
     public function up()
     {
-        Schema::create('unit_mesure_type_entretiens', function (Blueprint $table) {
+        Schema::create('unit_mesure_type_maintenances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('unitMesureId')->unsigned()->nullable();
             $table->foreign('unitMesureId')->references('id')->on('unit_mesures')->onDelete('cascade');
             $table->integer('typeEntretienId')->unsigned()->nullable();
-            $table->foreign('typeEntretienId')->references('id')->on('type_entretiens')->onDelete('cascade');
+            $table->foreign('typeEntretienId')->references('id')->on('type_maintenances')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateUnitMesureTypeEntretiensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unit_mesure_type_entretiens');
+        Schema::dropIfExists('unit_mesure_type_maintenances');
     }
 }

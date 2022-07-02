@@ -41,11 +41,11 @@ class Vehicule extends Model
         return $this->belongsToMany(CategoryPermit::class,'category_permit_vehicules','category_permit_id','vehicule_Id');
     }
 
-    public function panneVehicule()
+    public function panneVehicules()
     {
         return $this->hasMany(Panne::class);
     }
-    public function maintenanceVehicule(){
+    public function maintenanceVehicules(){
         return $this->hasMany(MaintenanceVehicule::class);
     }
 
@@ -56,6 +56,7 @@ class Vehicule extends Model
              'CategoryPermit'=>$this->CategoriePermis()->get(),
                 'totalVehicules'=>Vehicule::count(),
             //'NunberpanneVehicule'=>$this->panneVehicule()->count(),
+            //'maintenanceVehicule'=>$this->maintenanceVehicule()->get(),
         ];
 
     }

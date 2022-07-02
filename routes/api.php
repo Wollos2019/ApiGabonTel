@@ -58,7 +58,7 @@ Route::resource('pannes', PanneController::class, ['only' => ['store','show','in
 Route::resource('maintenance_vehicules', MaintenanceVehiculeController::class);
 
 //type entretient
-Route::resource('type_entretiens', TypeMaintenanceController::class);
+Route::resource('type_maintenances', TypeMaintenanceController::class);
 
 //unit_mesures
 Route::resource('unit_mesures', UnitMesureController::class);

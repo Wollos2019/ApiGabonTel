@@ -29,8 +29,10 @@ class CreateMaintenanceVehiculesTable extends Migration
             $table->foreign('fournisseurId')->references('id')->on('vendors')->onDelete('cascade');
 
             $table->integer('typeEntretienId')->unsigned();
-            $table->foreign('typeEntretienId')->references('id')->on('type_entretiens')->onDelete('cascade');
+            $table->foreign('typeEntretienId')->references('id')->on('type_maintenances')->onDelete('cascade');
 
+            $table->integer('unitMesureId')->unsigned()->nullable();
+            $table->foreign('unitMesureId')->references('id')->on('unit_mesures')->onDelete('cascade');
             $table->timestamps();
         });
     }

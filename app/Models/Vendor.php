@@ -16,7 +16,7 @@ class Vendor extends Model
         'addressFournisseur',
     ];
     protected $appends=['appends'];
-    public function maintenanceVehicule()
+    public function maintenanceVehicules()
     {
         return $this->hasMany(MaintenanceVehicule::class);
     }
@@ -30,7 +30,7 @@ class Vendor extends Model
     public function getAppendsAttribute()
     {
         return[
-           // 'pannes'=>$this->panne()->get(),
+            //'pannes'=>$this->panne()->get(),
             //'totalVehicule'=>$this->Vehicule()->count(),
             'totalFourniseur'=>Vendor::count(),
 
