@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Production;
 
+use App\Models\Production\Conducteur;
 use App\Http\Controllers\Controller;
-use App\Models\trancheHoraire;
+use App\Models\Production\Programme;
+use App\Http\Controllers\Production\ConducteurController;
 use Illuminate\Http\Request;
 
-class trancheHoController extends Controller
+class ProgrammeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,7 @@ class trancheHoController extends Controller
      */
     public function index()
     {
-        return trancheHoraire::all();
+        return Programme::all();
     }
 
     /**
@@ -26,16 +28,20 @@ class trancheHoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['heure_debut' => 'required',
+                                'date' => 'required',
+                                'duree' => 'required'
+    ]);
+        return Programme::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\trancheHoraire  $trancheHoraire
+     * @param  \App\Models\Production\Programme  $programme
      * @return \Illuminate\Http\Response
      */
-    public function show(trancheHoraire $trancheHoraire)
+    public function show(Programme $programme)
     {
         //
     }
@@ -44,24 +50,27 @@ class trancheHoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\trancheHoraire  $trancheHoraire
+     * @param  \App\Models\Production\Programme  $programme
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Programme $programme)
     {
-        $trancheHoraire = trancheHoraire::find($id);
-        $trancheHoraire->update($request->all());
-        return $trancheHoraire;
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\trancheHoraire  $trancheHoraire
+     * @param  \App\Models\Production\Programme  $programme
      * @return \Illuminate\Http\Response
      */
-    public function destroy(trancheHoraire $trancheHoraire)
+    public function destroy(Programme $programme)
     {
         //
+    }
+
+    public function search($heure_debut)
+    {
+        return Programme::where('heure_debut','>=', '%'.$heure_debut.'%')->get();
     }
 }

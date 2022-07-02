@@ -26,7 +26,7 @@ class CommandeController extends Controller
      */
     public function evaluatedC()
     {
-        return commande::where('evaluated','true')->get();
+        return commande::where('selected','false')->get();
         // return DB::table('commandes')->where('evaluated','true')->get();
     }
 
@@ -38,9 +38,9 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([//'date' => 'required',
-                                'contenu' => 'required',
-                                'idClient' => 'required'
+        $request->validate([                              
+                                'idClient' => 'required',
+                                'nomClient' => 'required'
     ]);
         return commande::create($request->all());
     }
