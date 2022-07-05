@@ -13,7 +13,7 @@ class Conducteur extends Model
     protected $with= ['Programme'];
 
     public function programme () {
-        return $this->hasMany(Programme::class);
+        return $this->hasMany(Programme::class)->orderBy('heure_debut','ASC');
     }
 
     public function getProgrammeAttribute()
