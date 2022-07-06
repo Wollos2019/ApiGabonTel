@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Commercial;
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\commande;
 use Illuminate\Http\Request;
 use DB;
 
-class CommandeController extends Controller
+class CommandeController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,8 @@ class CommandeController extends Controller
      */
     public function index()
     {
-        return commande::all();
+        //return commande::all();
+        return $this->showAll(commande::all());
     }
 
     /**
