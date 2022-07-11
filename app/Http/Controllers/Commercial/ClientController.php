@@ -16,7 +16,8 @@ class ClientController extends ApiController
      */
     public function index()
     {
-        return $this->showAll(Client::all());
+        //return $this->showAll(Client::all());
+        return Client::all();
     }
 
     /**
@@ -27,13 +28,21 @@ class ClientController extends ApiController
      */
     public function store(Request $request)
     {
-        $client = new Client($request->all());
+        // $client = new Client($request->all());
 
-        if($client->save()){
-            return $this->successResponse('Saved successfully', 201);
-        } else {
-            return $this->errorResponse('Error saved', 500);
-        }
+        // if($client->save()){
+        //     return $this->successResponse('Saved successfully', 201);
+        // } else {
+        //     return $this->errorResponse('Error saved', 500);
+        // }
+
+        $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'adresse' => 'required',
+            'email' => 'required'
+        ]);
+        return Client::create($request->all());
     }
 
     /**

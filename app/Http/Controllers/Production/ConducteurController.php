@@ -77,6 +77,6 @@ class ConducteurController extends Controller
 
     public function searchConduc($date1, $date2)
     {
-        return Conducteur::whereBetwenn('date', [$date1, $date2])->get();
+        return Conducteur::whereBetween('date', [$date1, $date2])->orderBy('date','ASC')->get();
     }
 }
