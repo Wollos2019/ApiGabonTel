@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Validator;
 use App\Models\Client;
+use App\Models\commande;
 
 class ClientController extends ApiController
 {
@@ -94,7 +95,9 @@ class ClientController extends ApiController
 
     }
 
-    public function commande ($client) {
-        return $client -> commande();
+    public function commande ($clientId) {
+        //$client=Client::where('id','=',$clientId)->first();
+        
+        return commande::where('idClient','=',$clientId)->get();
     }
 }
