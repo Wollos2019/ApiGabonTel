@@ -46,6 +46,11 @@ return [
             'root' => public_path('rh/employee'),
             'visibility' => 'public',
         ],
+        'client' => [
+            'driver' => 'local',
+            'root' => public_path('commercial/client'),
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

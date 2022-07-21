@@ -30,3 +30,5 @@ Route::apiResources([
 
 Route::get('/commandeDetails/somme', [ComDetailsController::class, 'productSum']);
 Route::get('/searchDet/{id}', [ComDetailsController::class, 'search']);
+Route::post('/clients/{clientId}/images', [ClientController::class, 'uploadImageClient']);
+Route::get('/historique/commandes',[ClientController::class, 'commande']);

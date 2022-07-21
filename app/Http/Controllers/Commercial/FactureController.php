@@ -27,8 +27,7 @@ class FactureController extends Controller
     public function store(Request $request)
     {
         $request->validate(['idClient' => 'required',
-            'idCommande' => 'required',
-            'nomClient' => 'required'
+            'idCommande' => 'required'   
         ]);
         return Facture::create($request->all());
     }

@@ -14,15 +14,25 @@ class Facture extends Model
         'idClient',
         'nomClient'
     ];
-    protected $appends=['appends'];
+    
+    protected $with = ['Client', 'CommandesDetail'];
+
 
     public function client () {
-        return $this->belongsTo(Client::class, 'idClient');
+        return $this->belongsTo(Client::class, 'idClient', 'id');
     }
 
-    public function getAppendsAttribute(){
-        return [
-            'Client'=> $this->client()
-        ];
+    public function commandesDetail() {
+        return $this->hasMany(CommandesDetail::class, 'idCommande', 'idCommande');
+    }
+
+    public function getClientAttribute()
+    {
+        return $this->client();
+    }
+
+    public function getComandesDetailAttribute()
+    {
+        return $this->commandesDetail();
     }
 }

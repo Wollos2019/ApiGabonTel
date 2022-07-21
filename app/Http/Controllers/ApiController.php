@@ -30,6 +30,24 @@ class ApiController extends Controller
         }
     }
 
+    public function uploadImgClient(UploadedFile $image, $path,$model=null)
+    {
+        if($model->photo){
+            File::delete($model->photo);
+        }
+        $disks=$path;
+        $url=null;
+
+        $storagePath= Storage::disk($disks)->put($url,$image);
+        $storageName = basename($storagePath);
+        return 'commercial/'.$path.'/'.$storageName;
+    }
+    public function deletePhoto($image){
+        if($image){
+            File::delete($image);
+        }
+    }
+
 
     public  function  uploadFile(UploadedFile $file, $path, $value= null){
         if($value)

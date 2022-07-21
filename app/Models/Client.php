@@ -17,17 +17,20 @@ class Client extends Model
         'gender',
         'town',
         'country',        
-        'civilityId'
+        'civilityId',
+        'photo'
     ];
 
+    protected $appends= ['appends'];
+
     public function commande () {
-        $this->hasMany(commande::class);
+        return $this->hasMany(commande::class, 'idClient', 'id');
     }
 
     public function getAppendsAttribute(){
         return [
-            'countEmployee'=> $this->employees()->count(),
-            'employees'=>$this->employees()->get()
+            'url'=> $this->photo? asset('' . $this->photo):null
         ];
     }
+
 }

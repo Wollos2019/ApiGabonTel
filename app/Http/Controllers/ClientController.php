@@ -48,7 +48,12 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        
+        if ($client->update()){
+            return $this->successResponse('update success',200);
+        }else{
+            return $this->errorResponse('Error update',500);
+        }
     }
 
     /**
@@ -60,5 +65,15 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         //
+    }
+
+    public function uploadImageEmployee($clientId, Request $request){
+
+        $employee=Client::where('id','=',$clientId)->first();
+
+        $d['photo']= $this->uploadImage($request->file('image'),'employee',$employee);
+        $employee->update($d);
+        return $this->showOne($employee);
+
     }
 }

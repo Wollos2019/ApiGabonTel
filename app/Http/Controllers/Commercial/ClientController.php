@@ -51,9 +51,9 @@ class ClientController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
-        //
+        return $this->showOne($client);
     }
 
     /**
@@ -63,9 +63,14 @@ class ClientController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $client)
     {
-        //
+        $client -> $request->all();
+        if ($client->update()){
+            return $this->successResponse('update success',200);
+        }else{
+            return $this->errorResponse('Error update',500);
+        }
     }
 
     /**
@@ -77,5 +82,19 @@ class ClientController extends ApiController
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadImageClient($clientId, Request $request){
+
+        $client=Client::where('id','=',$clientId)->first();
+
+        $d['photo']= $this->uploadImgClient($request->file('image'),'client',$client);
+        $client->update($d);
+        return $this->showOne($client);
+
+    }
+
+    public function commande ($client) {
+        return $client -> commande();
     }
 }
