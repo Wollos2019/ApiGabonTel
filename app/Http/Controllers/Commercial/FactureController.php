@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Commercial;
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\Facture;
 use Illuminate\Http\Request;
 
-class FactureController extends Controller
+class FactureController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -40,7 +41,7 @@ class FactureController extends Controller
      */
     public function show(Facture $facture)
     {
-        //
+        return $this->showOne($facture);
     }
 
     /**
