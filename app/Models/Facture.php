@@ -12,7 +12,9 @@ class Facture extends Model
     protected $fillable = [
         'idCommande',
         'idClient',
-        'nomClient'
+        'nomClient',
+        'tva',
+        'coutSup'
     ];
     
     protected $with = ['Client', 'CommandesDetail'];
