@@ -16,7 +16,7 @@ class CreateCommandesDetailsTable extends Migration
         Schema::create('commandes_details', function (Blueprint $table) {
             $table->id();
             $table->string("productName", 191)->nullable();
-            $table->integer("quantity")->unsigned();
+            
             $table->integer("idProduct")->unsigned();
             $table->unsignedBigInteger("idCommande");
             $table->unsignedInteger('prix')->nullable();

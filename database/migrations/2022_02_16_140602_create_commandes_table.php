@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\commande;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -25,6 +26,7 @@ class CreateCommandesTable extends Migration
             $table->string('evaluated', 50)->nullable();
             $table->string('invoiced', 50)->nullable();
             $table->string('selected', 50)->nullable();
+            $table->enum('status',commande::STATUS)->default('ENABLE');
         });
     }
 

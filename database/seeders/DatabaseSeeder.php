@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             permisSeeder::class,
             CategoriePermisSeeder::class,
             PermisCategorieSeeder::class,
-
+            ProductSeeder::class
 
         ]);
     }

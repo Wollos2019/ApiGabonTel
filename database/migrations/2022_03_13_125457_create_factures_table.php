@@ -21,6 +21,8 @@ class CreateFacturesTable extends Migration
             $table->foreign("idClient")->references('id')->on('clients')->onDelete('cascade');
             $table->foreign("idCommande")->references('id')->on('commandes')->onDelete('cascade');
             $table->timestamps();
+            $table->string('tva', 50)->nullable();
+            $table->double("coutSup")->nullable();
         });
     }
 

@@ -24,7 +24,7 @@ class CreateClientsTable extends Migration
             $table->enum('gender',User::GENDER)->default('MALE');
             $table->string('town')->nullable();
             $table->string('country')->nullable();
-
+            $table->string('photo')->nullable();
             $table->integer('civilityId')->unsigned()->nullable();
             $table->foreign('civilityId')->references('id')->on('civilities')->onDelete('RESTRICT');
             $table->timestamps();

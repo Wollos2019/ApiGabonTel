@@ -29,7 +29,7 @@ class CommandesDetail extends Model
 
     public function getAppendsAttribute(){
         return [
-            'productCommande'=> $this->product()
+            'productPrice'=> $this->product()
         ];
     }
 }
