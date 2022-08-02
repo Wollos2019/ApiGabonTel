@@ -15,7 +15,7 @@ class CategoriePermisSeeder extends Seeder
      */
     public function run()
     {
-        CategoryPermit::truncate();
+        //CategoryPermit::truncate();
         DB::table('category_permits')->insert(
             [   'id'=>"1",
                 'libelle'=>"type A",

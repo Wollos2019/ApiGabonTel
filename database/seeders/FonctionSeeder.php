@@ -15,7 +15,7 @@ class FonctionSeeder extends Seeder
      */
     public function run()
     {
-        Fonction::truncate();
+      //  Fonction::truncate();
         DB::table('fonctions')->insert(
             [ 'name' => "Developpeur"]
         );

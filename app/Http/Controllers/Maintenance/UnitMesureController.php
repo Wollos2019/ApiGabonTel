@@ -54,10 +54,10 @@ class UnitMesureController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(UnitMesure $mesure)
+    public function show(UnitMesure $unitMesure)
     {
 
-        return $this->showOne($mesure);
+        return $this->showOne($unitMesure);
     }
 
 
@@ -69,18 +69,18 @@ class UnitMesureController extends ApiController
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, UnitMesure $mesure)
+    public function update(Request $request, UnitMesure $unitMesure)
     {
         $rules=[
-            $mesure->symboleUniteMesure = $request->symboleUniteMesure,
-            $mesure->libelleUniteMesure = $request->libelleUniteMesure
+            $unitMesure->symboleUniteMesure = $request->symboleUniteMesure,
+            $unitMesure->libelleUniteMesure = $request->libelleUniteMesure
 
         ];
 
         $this->validate($request,$rules);
 
         $data=$request->all();
-        if ($mesure->update($data)){
+        if ($unitMesure->update($data)){
             return $this->showOne($data);
         }else{
             return $this->errorResponse('update fails!',404);
@@ -93,10 +93,10 @@ class UnitMesureController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(UnitMesure $mesure)
+    public function destroy(UnitMesure $unitMesure)
     {
 
-        if ($mesure->delete()){
+        if ($unitMesure->delete()){
             return $this->successResponse('delete with success',200);
 
         }else{

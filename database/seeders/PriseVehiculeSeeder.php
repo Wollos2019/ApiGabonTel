@@ -16,7 +16,7 @@ class PriseVehiculeSeeder extends Seeder
      */
     public function run()
     {
-        PriseVehicule::truncate();
+        //PriseVehicule::truncate();
         DB::table('prise_vehicules')->insert(
             [   'id'=>"1",
                 'objetPriseVehicule'=>"lorem ipsum loren betreh",

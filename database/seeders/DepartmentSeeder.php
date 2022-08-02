@@ -15,7 +15,7 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        Department::truncate();
+        //Department::truncate();
         DB::table('departments')->insert(
             [ 'name' => "Informatique"]
         );

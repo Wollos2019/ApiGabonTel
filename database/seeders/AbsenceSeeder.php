@@ -15,7 +15,7 @@ class AbsenceSeeder extends Seeder
      */
     public function run()
     {
-        Absence::truncate();
+//        Absence::truncate();
         DB::table('absences')->insert(
             [ 'type'=>"Congé autorisé",'color'=>"#75A3F3"]
         );

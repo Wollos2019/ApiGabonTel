@@ -15,7 +15,7 @@ class AssuranceSeeder extends Seeder
      */
     public function run()
     {
-        Assurance::truncate();
+        //Assurance::truncate();
             DB::table('assurances')->insert(
                 [   'id'=>"1",
                     'numeroPoliceAssurance'=>"NhgrhGGRlkj120",

@@ -17,9 +17,9 @@ class VehiculeSeeder extends Seeder
     public function run()
 
     {
-        Vehicule::truncate();
+        //Vehicule::truncate();
         DB::table('vehicules')->insert(
-            [   'id'=>"1",
+            [
                 'libelleVehicule'=>"Camry toyota",
                 'numeroIdentifiant'=>"#75A3F3",
                 'immatriculation'=>"Gb 125 nb ",
@@ -32,7 +32,7 @@ class VehiculeSeeder extends Seeder
                 ]
         );
         DB::table('vehicules')->insert(
-            [   'id'=>"2",
+            [
                 'libelleVehicule'=>"Camry pajero",
                 'numeroIdentifiant'=>"#73F3",
                 'immatriculation'=>"Gb 002 mi ",
@@ -45,7 +45,7 @@ class VehiculeSeeder extends Seeder
             ]
         );
         DB::table('vehicules')->insert(
-            ['id'=>"3",
+            [
                 'libelleVehicule'=>" toyota",
                 'numeroIdentifiant'=>"#75A3478",
                 'immatriculation'=>"Gb 1251 hi ",

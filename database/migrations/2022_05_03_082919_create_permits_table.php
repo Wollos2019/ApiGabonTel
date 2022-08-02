@@ -17,7 +17,7 @@ class CreatePermitsTable extends Migration
             $table->increments('id');
             $table->string('numeroPermis')->nullable();
             $table->date('dateAcquisition')->nullable();
-            $table->integer('userId')->unsigned();
+            $table->integer('userId')->unsigned()->nullable();
             $table->foreign('userId')->references('id')->on('users')->onDelete('CASCADE');
 
             $table->timestamps();

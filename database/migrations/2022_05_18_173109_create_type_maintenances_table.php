@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeEntretiensTable extends Migration
+class CreateTypeMaintenancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTypeEntretiensTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_entretiens', function (Blueprint $table) {
+        Schema::create('type_maintenances', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelleTypeEntretien');
             $table->text('descriptionTypeEntretien');
 
-            $table->integer('unitMesureId')->unsigned();
+            $table->integer('unitMesureId')->unsigned()->nullable();
             $table->foreign('unitMesureId')->references('id')->on('unit_mesures')->onDelete('cascade');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateTypeEntretiensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_entretiens');
+        Schema::dropIfExists('type_maintenances');
     }
 }

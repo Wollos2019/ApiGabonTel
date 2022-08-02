@@ -15,7 +15,7 @@ class SessionSeeder extends Seeder
      */
     public function run()
     {
-        Session::truncate();
+        //Session::truncate();
         DB::table('sessions')->insert(
             [ 'year' => "2022",'status'=>'PENDING']
         );
