@@ -77,6 +77,18 @@ class PanneController extends ApiController
         return $this->showOne($panne);
     }
 
+
+    public function searchPanne(Request $request){
+        $query = Panne::query();
+        $data = $request->input('searchPanne');
+        if ($data){
+            $query->whereRaw("libellePanne LIKE '%".$data."%'")
+            ->orWhereRaw("descriptionPanne LIKE '%".$data."%'");
+        }
+        return $query->get();
+    }
+
+
     /**
      * Display the specified resource.
      *

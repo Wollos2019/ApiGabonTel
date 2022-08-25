@@ -7,6 +7,7 @@ use App\Models\MaintenanceVehicule;
 use App\Models\Panne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Vehicule extends Model
 {
@@ -18,6 +19,8 @@ class Vehicule extends Model
         'libelleVehicule',
         'numeroIdentifiant',
         'immatriculation',
+        'marque',
+        'carburant',
         'carteGrise',
         'nombrePlace',
         'longueurVehicule',
@@ -54,9 +57,11 @@ class Vehicule extends Model
         return[
 
              'CategoryPermit'=>$this->CategoriePermis()->get(),
-                'totalVehicules'=>Vehicule::count(),
+
             //'NunberpanneVehicule'=>$this->panneVehicule()->count(),
-            //'maintenanceVehicule'=>$this->maintenanceVehicule()->get(),
+            'maintenanceVehicule'=>DB::table('maintenance_vehicules')->where('vehiculeId','=',$this->id)->get(),
+            'panneVehicule'=>DB::table('pannes')->where('vehiculeId','=',$this->id)->get(),
+            'assurances'=>DB::table('assurances')->where('idVehicule','=',$this->id)->get(),
         ];
 
     }

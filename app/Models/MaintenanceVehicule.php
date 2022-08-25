@@ -41,7 +41,7 @@ class MaintenanceVehicule extends Model
             'fournisseur'=>$this->vendor()->first(),
             'typeMaintenancevehicule'=>$this->typeMaintenancevehicule()->first(),
 
-            'totalMaintenance'=>MaintenanceVehicule::count(),
+
 
 
 

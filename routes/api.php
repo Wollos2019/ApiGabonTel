@@ -53,6 +53,9 @@ Route::resource('vendors', VendorController::class);
 
 //panne
 Route::resource('pannes', PanneController::class, ['only' => ['store','show','index','destroy','update']]);
+// search panne
+Route::get('/pannes/searchPanne',[PanneController::class,'searchPanne']);
+
 
 //maintenace vehicule
 Route::resource('maintenance_vehicules', MaintenanceVehiculeController::class);
@@ -64,10 +67,8 @@ Route::resource('type_maintenances', TypeMaintenanceController::class);
 Route::resource('unit_mesures', UnitMesureController::class);
 
 
-//Route::get('images/{filename}',function($filename){
-//    $file=\Illuminate\Support\Facades\Storage::get($filename);
-//    return response($file,200)->header('Content-Type', 'image/type')
-//)}
+// Setting routes
+Route::resource('roles_permissions',\App\Http\Controllers\Config\SettingController::class);
 
 //Public Routes
 
@@ -90,5 +91,6 @@ Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('dashboards',\App\Http\Controllers\Dashboard\DashboardController::class);
+Route::apiResource('statistical',\App\Http\Controllers\Vehicule\StatisticalController::class);
 
 

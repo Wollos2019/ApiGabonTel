@@ -38,7 +38,7 @@ class Panne extends Model
             'fournisseurs'=>$this->vendor()->get(),
             'Vehicule'=>$this->Vehicule()->first(),
             //'totalVehicule'=>$this->Vehicule()->count(),
-            'totalPanne'=>Panne::count(),
+
 
 
 

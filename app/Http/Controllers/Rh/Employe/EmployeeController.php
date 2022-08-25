@@ -123,4 +123,23 @@ class EmployeeController extends ApiController
     {
         //
     }
+
+
+
+public function searchByNameAndId($lastname,$firstname,$id)
+        {
+            $employee = Employee::where('lastname', 'LIKE', '%'. $lastname. '%')->orWere('firstname', 'LIKE', '%'. $firstname. '%')->orWere('id', 'LIKE', '%'. $id. '%')->get();
+            if(count($employee)){
+                return $this->ShowAll($employee);
+
+            }
+            else
+            {
+                return $this->errorResponse( 'No Data not found', 404);
+
+            }
+        }
+
+
+
 }

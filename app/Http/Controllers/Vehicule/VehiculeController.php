@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 
 use App\Models\Vehicule\Vehicule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VehiculeController extends ApiController
 {
@@ -35,6 +36,8 @@ class VehiculeController extends ApiController
         'libelleVehicule'=>'required',
         'numeroIdentifiant'=>'required',
         'immatriculation'=>'required',
+        'marque'=>'required',
+        'carburant'=>'required',
         'carteGrise'=>'required',
         'nombrePlace'=>'required',
         'longueurVehicule'=>'required',
@@ -83,6 +86,8 @@ class VehiculeController extends ApiController
         $vehicule->libelleVehicule = $request->libelleVehicule;
         $vehicule->numeroIdentifiant = $request->numeroIdentifiant;
         $vehicule->immatriculation = $request->immatriculation;
+        $vehicule->marque = $request->marque;
+        $vehicule->carburant = $request->carburant;
         $vehicule->carteGrise = $request->carteGrise;
         $vehicule->nombrePlace = $request->nombrePlace;
         $vehicule->longueurVehicule = $request->longueurVehicule;
@@ -112,5 +117,9 @@ class VehiculeController extends ApiController
         }else{
             return $this->errorResponse('Error update',500);
         }
+    }
+
+    public function seeachByName(){
+        DB::table('vehicule')->where('')->get();
     }
 }

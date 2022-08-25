@@ -32,7 +32,7 @@ class Vendor extends Model
         return[
             //'pannes'=>$this->panne()->get(),
             //'totalVehicule'=>$this->Vehicule()->count(),
-            'totalFourniseur'=>Vendor::count(),
+
 
 
 

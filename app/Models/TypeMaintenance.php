@@ -12,7 +12,7 @@ class TypeMaintenance extends Model
     protected $fillable=[
         'libelleTypeEntretien',
         'descriptionTypeEntretien',
-        'unitMesureId',
+        //'unitMesureId',
 
     ];
     protected $appends=['appends'];
@@ -31,7 +31,7 @@ class TypeMaintenance extends Model
     public function getAppendsAttribute()
     {
         return[
-            'maintenacevehicules'=>$this->maintenacevehicules()->get(),
+            //'maintenacevehicules'=>$this->maintenacevehicules()->get(),
             //'totalVehicule'=>$this->Vehicule()->count(),
 
 

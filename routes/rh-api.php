@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('employees',EmployeeController::class);
 Route::post('/employees/{employee}/images', [EmployeeController::class, 'uploadImageEmployee']);
+Route::get('/employees/searchByNameAndId', [EmployeeController::class,'searchByNameAndId']);

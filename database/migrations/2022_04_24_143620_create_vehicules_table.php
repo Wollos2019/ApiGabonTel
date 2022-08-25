@@ -18,6 +18,8 @@ class CreateVehiculesTable extends Migration
             $table->string('libelleVehicule')->nullable();
             $table->string('numeroIdentifiant')->nullable();
             $table->string('immatriculation')->nullable();
+            $table->string('marque')->nullable();
+            $table->string('carburant')->nullable();
             $table->string('carteGrise')->nullable();
             $table->integer('nombrePlace')->nullable();
             $table->decimal('longueurVehicule')->nullable();

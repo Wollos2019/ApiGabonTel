@@ -13,7 +13,7 @@ class TypeMaintenanceController extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class TypeMaintenanceController extends ApiController
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request )
@@ -33,7 +33,7 @@ class TypeMaintenanceController extends ApiController
         $data=[
             'libelleTypeEntretien'=>'required',
             'descriptionTypeEntretien'=>'required',
-            'unitMesureId'=>'required',
+            //'unitMesureId'=>'required',
         ];
         $this->validate($request,$data);
 
@@ -51,7 +51,7 @@ class TypeMaintenanceController extends ApiController
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(TypeMaintenance $typeMaintenance)
     {
@@ -65,14 +65,14 @@ class TypeMaintenanceController extends ApiController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request,TypeMaintenance $typeMaintenance)
     {
         $type=[
             $typeMaintenance->libelleTypeEntretien = $request->libelleTypeEntretien,
             $typeMaintenance->descriptionTypeEntretien = $request->descriptionTypeEntretien,
-            $typeMaintenance->unitMesureId = $request->unitMesureId,
+            //$typeMaintenance->unitMesureId = $request->unitMesureId,
 
         ];
         $this->validate($request,$type);
@@ -89,7 +89,7 @@ class TypeMaintenanceController extends ApiController
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(TypeMaintenance $typeMaintenance)
     {
